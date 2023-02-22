@@ -32,10 +32,6 @@ body {
     visibility: hidden;
 }
 
-.game-complete-popup p {
-    display: inline;
-    word-wrap: break-word;
-}
 
 .play-again-button {
     display: block;
