@@ -43,6 +43,7 @@ function handleClick(event) {
         gameCompletePopup.style.visibility = "visible"
         turnMessage.style.visibility = "hidden"
         winningPlayerNum.textContent = 1
+        winningPlayerNum.style.visibility = "visible"
     } else if (box4.textContent === "X" && box5.textContent === "X" && box6.textContent === "X") {
         boxes.forEach(box => {
             box.removeEventListener("click", handleClick)
@@ -50,6 +51,7 @@ function handleClick(event) {
         gameCompletePopup.style.visibility = "visible"
         turnMessage.style.visibility = "hidden"
         winningPlayerNum.textContent = 1
+        winningPlayerNum.style.visibility = "visible"
     } else if (box7.textContent === "X" && box8.textContent === "X" && box9.textContent === "X") {
         boxes.forEach(box => {
             box.removeEventListener("click", handleClick)
@@ -57,14 +59,15 @@ function handleClick(event) {
         gameCompletePopup.style.visibility = "visible"
         turnMessage.style.visibility = "hidden"
         winningPlayerNum.textContent = 1
-    }
-    else if (box1.textContent === "X" && box4.textContent === "X" && box7.textContent === "X") {
+        winningPlayerNum.style.visibility = "visible"
+    } else if (box1.textContent === "X" && box4.textContent === "X" && box7.textContent === "X") {
         boxes.forEach(box => {
             box.removeEventListener("click", handleClick)
         });
         gameCompletePopup.style.visibility = "visible"
         turnMessage.style.visibility = "hidden"
         winningPlayerNum.textContent = 1
+        winningPlayerNum.style.visibility = "visible"
     } else if (box2.textContent === "X" && box5.textContent === "X" && box8.textContent === "X") {
         boxes.forEach(box => {
             box.removeEventListener("click", handleClick)
@@ -79,6 +82,7 @@ function handleClick(event) {
         gameCompletePopup.style.visibility = "visible"
         turnMessage.style.visibility = "hidden"
         winningPlayerNum.textContent = 1
+        winningPlayerNum.style.visibility = "visible"
     } else if (box1.textContent === "X" && box5.textContent === "X" && box9.textContent === "X") {
         boxes.forEach(box => {
             box.removeEventListener("click", handleClick)
@@ -86,6 +90,7 @@ function handleClick(event) {
         gameCompletePopup.style.visibility = "visible"
         turnMessage.style.visibility = "hidden"
         winningPlayerNum.textContent = 1
+        winningPlayerNum.style.visibility = "visible"
     } else if (box3.textContent === "X" && box5.textContent === "X" && box7.textContent === "X") {
         boxes.forEach(box => {
             box.removeEventListener("click", handleClick)
@@ -93,6 +98,7 @@ function handleClick(event) {
         gameCompletePopup.style.visibility = "visible"
         turnMessage.style.visibility = "hidden"
         winningPlayerNum.textContent = 1
+        winningPlayerNum.style.visibility = "visible"
         //? Now with O's
     } else if (box1.textContent === "O" && box2.textContent === "O" && box3.textContent === "O") {
         boxes.forEach(box => {
@@ -101,6 +107,7 @@ function handleClick(event) {
         gameCompletePopup.style.visibility = "visible"
         turnMessage.style.visibility = "hidden"
         winningPlayerNum.textContent = 2
+        winningPlayerNum.style.visibility = "visible"
     } else if (box4.textContent === "O" && box5.textContent === "O" && box6.textContent === "O") {
         boxes.forEach(box => {
             box.removeEventListener("click", handleClick)
@@ -108,6 +115,7 @@ function handleClick(event) {
         gameCompletePopup.style.visibility = "visible"
         turnMessage.style.visibility = "hidden"
         winningPlayerNum.textContent = 2
+        winningPlayerNum.style.visibility = "visible"
     } else if (box7.textContent === "O" && box8.textContent === "O" && box9.textContent === "O") {
         boxes.forEach(box => {
             box.removeEventListener("click", handleClick)
@@ -115,6 +123,7 @@ function handleClick(event) {
         gameCompletePopup.style.visibility = "visible"
         turnMessage.style.visibility = "hidden"
         winningPlayerNum.textContent = 2
+        winningPlayerNum.style.visibility = "visible"
     }
     else if (box1.textContent === "O" && box4.textContent === "O" && box7.textContent === "O") {
         boxes.forEach(box => {
@@ -123,6 +132,7 @@ function handleClick(event) {
         gameCompletePopup.style.visibility = "visible"
         turnMessage.style.visibility = "hidden"
         winningPlayerNum.textContent = 2
+        winningPlayerNum.style.visibility = "visible"
     } else if (box2.textContent === "O" && box5.textContent === "O" && box8.textContent === "O") {
         boxes.forEach(box => {
             box.removeEventListener("click", handleClick)
@@ -130,6 +140,7 @@ function handleClick(event) {
         gameCompletePopup.style.visibility = "visible"
         turnMessage.style.visibility = "hidden"
         winningPlayerNum.textContent = 2
+        winningPlayerNum.style.visibility = "visible"
     } else if (box3.textContent === "O" && box6.textContent === "O" && box9.textContent === "O") {
         boxes.forEach(box => {
             box.removeEventListener("click", handleClick)
@@ -137,6 +148,7 @@ function handleClick(event) {
         gameCompletePopup.style.visibility = "visible"
         turnMessage.style.visibility = "hidden"
         winningPlayerNum.textContent = 2
+        winningPlayerNum.style.visibility = "visible"
     } else if (box1.textContent === "O" && box5.textContent === "O" && box9.textContent === "O") {
         boxes.forEach(box => {
             box.removeEventListener("click", handleClick)
@@ -144,6 +156,7 @@ function handleClick(event) {
         gameCompletePopup.style.visibility = "visible"
         turnMessage.style.visibility = "hidden"
         winningPlayerNum.textContent = 2
+        winningPlayerNum.style.visibility = "visible"
     } else if (box3.textContent === "O" && box5.textContent === "O" && box7.textContent === "O") {
         boxes.forEach(box => {
             box.removeEventListener("click", handleClick)
@@ -151,11 +164,12 @@ function handleClick(event) {
         gameCompletePopup.style.visibility = "visible"
         turnMessage.style.visibility = "hidden"
         winningPlayerNum.textContent = 2
-    //FINALLY number of turns 
-    } else if (numberOfTurns === 9) {
+        winningPlayerNum.style.visibility = "visible"
+    } else if (numberOfTurns === 9) { //FINALLY number of turns 
         gameCompleteMessage.textContent = "Awww, it's a tie"
         gameCompletePopup.style.visibility = "visible"
         turnMessage.style.visibility = "hidden"
+        winningPlayerNum.style.visibility = "hidden"
     }
 }
 
@@ -168,10 +182,14 @@ function resetGame() {
         box.textContent = ""
         box.addEventListener("click", handleClick)
         gameCompletePopup.style.visibility = "hidden"
-        turnMessage.style.visibility = "complete"
+        turnMessage.style.visibility = "visible"
         numberOfTurns = 0
+        playerNumber.textContent = 1 
+        gameCompleteMessage.textContent = "Congratulations! The winner is Player"
+        winningPlayerNum.style.visibility = "hidden"
     });
 }
 
 playAgainBtn.addEventListener("click", resetGame)
 
+//BUG  Player 1 and 2 alternates 

@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 body {
     text-align: center;
@@ -15,7 +15,7 @@ body {
     border: 1px solid black;
     width: 450px;
     height: 450px;
-    margin: 0 auto;
+    margin: 20px auto;
 }
 
 .box {
@@ -30,4 +30,14 @@ body {
 
 .game-complete-popup {
     visibility: hidden;
+}
+
+.game-complete-popup p {
+    display: inline;
+    word-wrap: break-word;
+}
+
+.play-again-button {
+    display: block;
+    margin: 20px auto;
 }
