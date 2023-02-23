@@ -59,22 +59,19 @@ function checkIfPlayerWins() {
             turnMessage.style.visibility = "hidden"
             numberOfPlayer2wins++
             player2WinCount.textContent = numberOfPlayer2wins
-        } else if (numberOfTurns === 9) {
-            resultsMessage.textContent = "Awww, it's a tie"
-            gameCompletePopup.style.visibility = "visible"
-            turnMessage.style.visibility = "hidden"
-            // debugger
-            numberOfTies++
-            // console.log(numberOfTies);
-            tiesCount.textContent = numberOfTies/8 //!bug numberOfTies runs 8 times when this condition is met 
         }
     })
+    if (numberOfTurns === 9) {
+        resultsMessage.textContent = "Awww, it's a tie"
+        gameCompletePopup.style.visibility = "visible"
+        turnMessage.style.visibility = "hidden"
+        numberOfTies++
+        tiesCount.textContent = numberOfTies
+    }
 }
 
 function handleHover () {
-    console.log("hovering");
     let boxHovering = event.target
-    console.log(boxHovering);
     if (numberOfTurns % 2 !== 0) {
         boxHovering.textContent = "O"
         boxHovering.style.backgroundColor = "rgba(202, 78, 69, 0.8)"
@@ -91,9 +88,7 @@ boxes.forEach(box => {
 });
 
 function handleHoverOff () {
-    console.log("not hovering");
     let boxHovering = event.target
-    console.log(boxHovering);
     boxHovering.textContent = ""
     boxHovering.style.backgroundColor = "rgb(252, 245, 245)"
     boxHovering.style.color = "rgba(202, 78, 69, 0.8)"
@@ -104,7 +99,6 @@ boxes.forEach(box => {
 });
 
 function handleClick(event) {
-    console.log("clicking");
     let boxClicked = event.target
     let boxNumberClicked = Number(boxClicked.dataset.num)
     numberOfTurns++

@@ -85,7 +85,7 @@ Styling with CSS was very basic in the early stages. I created a grid but made t
 * Added gradient background 
 * 
 
-[](/README%20images/Styling%20Screenshot%202023-02-23%20at%2011.23.33%20pm.png)
+[](README%20images/Styling%20Screenshot%202023-02-23%20at%2011.23.33%20pm.png)
 
 
 ## Adding Bonus Features :gift:
@@ -99,6 +99,10 @@ https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2
 * [Changed the cursor](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/788a996a3b89034bfa984bd9e4b9bf7a57c58d41) to "pointer" on the boxes and button and "not-allowed" if the boxes have already been clicked or if there is a win.
 * Made [media queries](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/71d10d5e33f8eac1a81ce8b68e38541a7645c2c7) for tablet and phone sizes 
 
+## Solved Bugs :bug:
+* The tie counter incremented in 8's everytime there is a tie. A temporary fix was dividing `numberOfTies` by 8 but there were also some times it incremented in other numbers.
+    - The fix was to remove the last else if statement for `numberOfTuirns === 9` out of the  `waysToWin.forEach()` function to it's own if statement in the `checkIfPlayerWins()` function. This is as it was incrementing as it went through each of the 8 win patterns in the `waysToWin` array.
+
 ## Unsolved Problems
 * Change the grid so that it dyanamically changes size depending on the screen as it is currently width/length is currently fixed
     * I haven't found a way yet to be able to centre the grid on the page and not cause it to shrink without fixing the width/length.
@@ -109,5 +113,3 @@ https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2
 
 ## Future features I want to add to my game
 
-## Known bugs
-* The tie counter increments in 8's everytime there is a tie. A temporary fix is dividing this number by 8 but there are times it doesn't give a whole number.
