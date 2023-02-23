@@ -51,10 +51,6 @@ header h1 {
     width: 70%;
 }
 
-/* .player1-win-count .player2-win-count .ties-count {
-    font-weight: 900;
-} */
-
 .turn-message {
     padding: 8px 0;
 }
@@ -98,6 +94,16 @@ header h1 {
     border: none;
     box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
     cursor: pointer;
+}
+
+.hovering {
+    background-color: rgba(202, 78, 69, 0.8);
+    color: rgb(252, 245, 245)
+}
+
+.clicked {
+    background-color: rgb(252, 245, 245);
+    color: rgba(202, 78, 69, 0.8);
 }
 
 @media (max-width: 414px) {

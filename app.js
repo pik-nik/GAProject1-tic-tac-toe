@@ -74,12 +74,10 @@ function handleHover () {
     let boxHovering = event.target
     if (numberOfTurns % 2 !== 0) {
         boxHovering.textContent = "O"
-        boxHovering.style.backgroundColor = "rgba(202, 78, 69, 0.8)"
-        boxHovering.style.color = "rgb(252, 245, 245)"
+        boxHovering.classList.add("hovering")
     } else {
         boxHovering.textContent = "X"
-        boxHovering.style.backgroundColor = "rgba(202, 78, 69, 0.8)"
-        boxHovering.style.color = "rgb(252, 245, 245)"
+        boxHovering.classList.add("hovering")
     }
 }
 
@@ -90,8 +88,7 @@ boxes.forEach(box => {
 function handleHoverOff () {
     let boxHovering = event.target
     boxHovering.textContent = ""
-    boxHovering.style.backgroundColor = "rgb(252, 245, 245)"
-    boxHovering.style.color = "rgba(202, 78, 69, 0.8)"
+    boxHovering.classList.remove("hovering")
 }
 
 boxes.forEach(box => {
@@ -102,8 +99,7 @@ function handleClick(event) {
     let boxClicked = event.target
     let boxNumberClicked = Number(boxClicked.dataset.num)
     numberOfTurns++
-    boxClicked.style.backgroundColor = "rgb(252, 245, 245)"
-    boxClicked.style.color = "rgba(202, 78, 69, 0.8"
+    boxClicked.classList.add("clicked")
 
     if (numberOfTurns % 2 !== 0) {
         boxClicked.textContent = "X"
@@ -132,7 +128,9 @@ function resetGame() {
         box.addEventListener("click", handleClick)
         box.addEventListener("mouseover", handleHover) 
         box.addEventListener("mouseout", handleHoverOff) 
-        box.style.cursor = "pointer"    
+        box.style.cursor = "pointer"
+        box.classList.remove("hovering")
+        box.classList.remove("clicked")    
     })
     gameCompletePopup.style.visibility = "hidden"
     turnMessage.style.visibility = "visible"

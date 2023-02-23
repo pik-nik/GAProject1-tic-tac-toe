@@ -7,7 +7,7 @@ Grab a friend (or foe) and check out my game here:
 
 https://pages.git.generalassemb.ly/piknik/project1_tic_tac_toe/
 
-## Goals for making the game 
+## Goals :rocket:
 These were the goals that I had set in order to get a functional game running: 
 * Create a basic 3x3 grid where each grid/box responds to a click 
 * Have a display which shows who's turn it is and changes once the player has gone
@@ -82,10 +82,7 @@ if ((box1.textContent === "X" && box2.textContent === "X" && box3.textContent ==
 ### Early Stages with MVP 
 Styling with CSS was very basic in the early stages. I created a grid but made the height and width fixed on my grid and each individual box to ensure that I had a 9x9 square grid running so I could get started on the functionality of the game. This did the job but was not great for small screens.
 ### Now let's add a bit of colour
-* Added gradient background 
-* 
-
-[](README%20images/Styling%20Screenshot%202023-02-23%20at%2011.23.33%20pm.png)
+![](README%20images/Styling%20Screenshot%202023-02-23%20at%2011.23.33%20pm.png)
 
 
 ## Adding Bonus Features :gift:
@@ -99,17 +96,16 @@ https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2
 * [Changed the cursor](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/788a996a3b89034bfa984bd9e4b9bf7a57c58d41) to "pointer" on the boxes and button and "not-allowed" if the boxes have already been clicked or if there is a win.
 * Made [media queries](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/71d10d5e33f8eac1a81ce8b68e38541a7645c2c7) for tablet and phone sizes 
 
-## Solved Bugs :bug:
+## Bugs :bug:
 * The tie counter incremented in 8's everytime there is a tie. A temporary fix was dividing `numberOfTies` by 8 but there were also some times it incremented in other numbers.
-    - The fix was to remove the last else if statement for `numberOfTuirns === 9` out of the  `waysToWin.forEach()` function to it's own if statement in the `checkIfPlayerWins()` function. This is as it was incrementing as it went through each of the 8 win patterns in the `waysToWin` array.
+    - SOLVED: The fix was to remove the last else if statement for `numberOfTuirns === 9` out of the  `waysToWin.forEach()` function to it's own if statement in the `checkIfPlayerWins()` function. This is as it was incrementing as it went through each of the 8 win patterns in the `waysToWin` array.
 
 ## Unsolved Problems
 * Change the grid so that it dyanamically changes size depending on the screen as it is currently width/length is currently fixed
     * I haven't found a way yet to be able to centre the grid on the page and not cause it to shrink without fixing the width/length.
-* The tie counter increments in 8's everytime there is a tie. A temporary fix is dividing this number by 8 but there are times it doesn't give a whole number.
 
 ## Improvements to my code
 * Add classes for my CSS styling and use class lists to add them in and out
-
+* Alternate starting turns
 ## Future features I want to add to my game
 
