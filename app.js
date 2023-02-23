@@ -67,6 +67,39 @@ function checkIfPlayerWins() {
     })
 }
 
+//! add a class list to the box hovering
+// function handleHover () {
+//     console.log("hovering");
+//     let boxHovering = event.target
+//     console.log(boxHovering);
+//     if (numberOfTurns % 2 !== 0) {
+//         boxHovering.textContent = "O"
+//         boxHovering.style.backgroundColor = "gainsboro"
+//         boxHovering.style.color = "black"
+//     } else {
+//         boxHovering.textContent = "X"
+//         boxHovering.style.backgroundColor = "gainsboro"
+//         boxHovering.style.color = "black"
+//     }
+// }
+// function handleHoverOff () {
+//     console.log("not hovering");
+//     let boxHovering = event.target
+//     console.log(boxHovering);
+//     // boxHovering.textContent = "*"
+//     boxHovering.textContent = ""
+//     boxHovering.style.backgroundColor = "#ffff"
+//     boxHovering.style.color = "rgba(202, 78, 69, 0.8)"
+// }
+
+// boxes.forEach(box => {
+//     box.addEventListener("mouseover", handleHover)
+// });
+
+// boxes.forEach(box => {
+//     box.addEventListener("mouseout", handleHoverOff)
+// });
+
 function handleClick(event) {
     let boxClicked = event.target
     let boxNumberClicked = Number(boxClicked.dataset.num)
@@ -106,4 +139,6 @@ function resetGame() {
 }
 
 playAgainBtn.addEventListener("click", resetGame)
+
+
 
