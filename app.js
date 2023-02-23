@@ -15,26 +15,35 @@ let resultsMessage = document.querySelector(".results-message")
 let playAgainBtn = document.querySelector(".play-again-button")
 
 let numberOfTurns = 0
-let waysToWin = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]]
+let waysToWin = [
+    [1,2,3],
+    [4,5,6],
+    [7,8,9],
+    [1,4,7],
+    [2,5,8],
+    [3,6,9],
+    [1,5,9],
+    [3,5,7]
+]
 let boxNumbersClickedByPlayer1 = []
 let boxNumbersClickedByPlayer2 = []
 
-let doesPlayer1win = false
+// let doesPlayer1win = false
 
-function checkIfPlayer1Wins(doesPlayer1win) {
-    waysToWin.forEach(winPattern => {
-        console.log('winPattern', winPattern);
-        winPattern.every(number => {
-            if (boxNumbersClickedByPlayer1.length >= 3 && boxNumbersClickedByPlayer1.includes(number) === true) {
-                console.log('potato', boxNumbersClickedByPlayer1.includes(number));
-            return boxNumbersClickedByPlayer1.includes(number)
-            // if true for all three numbers then return doesPlayer1win = true
-            }
+// function checkIfPlayer1Wins(doesPlayer1win) {
+//     waysToWin.forEach(winPattern => {
+//         console.log('winPattern', winPattern);
+//         winPattern.every(number => {
+//             if (boxNumbersClickedByPlayer1.length >= 3 && boxNumbersClickedByPlayer1.includes(number) === true) {
+//                 console.log('potato', boxNumbersClickedByPlayer1.includes(number));
+//             return boxNumbersClickedByPlayer1.includes(number)
+//             // if true for all three numbers then return doesPlayer1win = true
+//             }
             
-        })
-        //if true turn doesPlayer1win into true
-    })
-} // this function returns true or false
+//         })
+//         //if true turn doesPlayer1win into true
+//     })
+// } // this function returns true or false
 
 // function checkIfPlayer1Wins(doesPlayer1win) {
 //     while (doesPlayer1win = false) { 
@@ -75,12 +84,33 @@ function handleClick(event) {
     //     return boxNumbersClickedByPlayer1.includes(number)
     // })
     // console.log(check);
-    console.log('does player 1 win?', checkIfPlayer1Wins(doesPlayer1win));
 
 
-    //?  now to hard code the wins... first with X's
-    if ((box1.textContent === "X" && box2.textContent === "X" && box3.textContent === "X") || (box4.textContent === "X" && box5.textContent === "X" && box6.textContent === "X") || (box7.textContent === "X" && box8.textContent === "X" && box9.textContent === "X") || (box1.textContent === "X" && box4.textContent === "X" && box7.textContent === "X") || (box2.textContent === "X" && box5.textContent === "X" && box8.textContent === "X") || (box3.textContent === "X" && box6.textContent === "X" && box9.textContent === "X") || (box1.textContent === "X" && box5.textContent === "X" && box9.textContent === "X") || (box3.textContent === "X" && box5.textContent === "X" && box7.textContent === "X")) {
-    // if (checkIfPlayer1Wins(doesPlayer1win)) {
+    function checkIfPlayerWins() {
+        waysToWin.forEach(winPattern => {
+            console.log('winPattern', winPattern);
+            winPattern.every(number => {
+                if ((box1.textContent === "X" && box2.textContent === "X" && box3.textContent === "X")) {
+                    boxes.forEach(box => {
+                        box.removeEventListener("click", handleClick)
+                    });
+                    resultsMessage.textContent = "Congratulations, Player 1 is the winner!"
+                    gameCompletePopup.style.visibility = "visible"
+                    turnMessage.style.visibility = "hidden"
+
+                    console.log('potato', boxNumbersClickedByPlayer1.includes(number));
+                    return boxNumbersClickedByPlayer1.includes(number)
+                }
+            })
+            //if true turn doesPlayer1win into true
+        })
+    } // this function returns true or false
+    // console.log('does player 1 win?', checkIfPlayer1Wins(doesPlayer1win));
+
+    //!  now to hard code the wins... first with X's
+    // if ((box1.textContent === "X" && box2.textContent === "X" && box3.textContent === "X") || (box4.textContent === "X" && box5.textContent === "X" && box6.textContent === "X") || (box7.textContent === "X" && box8.textContent === "X" && box9.textContent === "X") || (box1.textContent === "X" && box4.textContent === "X" && box7.textContent === "X") || (box2.textContent === "X" && box5.textContent === "X" && box8.textContent === "X") || (box3.textContent === "X" && box6.textContent === "X" && box9.textContent === "X") || (box1.textContent === "X" && box5.textContent === "X" && box9.textContent === "X") || (box3.textContent === "X" && box5.textContent === "X" && box7.textContent === "X")) {
+    // ? if (checkIfPlayerWins()) {
+    if ((box1.textContent === "X" && box2.textContent === "X" && box3.textContent === "X")) {
         // make it such you can't click anymore boxes
         boxes.forEach(box => {
             box.removeEventListener("click", handleClick)
