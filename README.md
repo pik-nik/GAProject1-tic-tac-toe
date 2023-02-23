@@ -74,6 +74,10 @@ https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2
 I added a win count for each player and a tie counter
 ### Adding a round counter 
 
+## Things that I want to do to improve my game 
+* Change the grid so that it dyanamically changes size and is a better user experience for small screens and phones 
+* Handle Hover 
+
 ## Known bugs
 * The tie counter increments in 8's everytime there is a tie. A temporary fix is dividing this number by 8 but there are times it doesn't give a whole number.
 

@@ -1,6 +1,8 @@
 * {
     box-sizing: border-box;
-    border: 1px solid red;
+    /* border: 1px solid red; */
+    padding: 0;
+    margin: 0;
 }
 body {
     text-align: center;
@@ -8,7 +10,39 @@ body {
     width: 60%;
     max-width: 600px;
     margin: 20px auto;
+    background: linear-gradient(to right, #ece6b9, #f05070);
+    color:rgba(48, 9, 7, 0.8)
 }
+
+header {
+    margin: 10px auto;
+    padding: 5px;
+}
+
+header h1 {
+    font-size: 5em;
+    color: #fff;
+    text-shadow:
+        0 0 7px #fff,
+        0 0 10px rgb(255, 187, 182),
+        0 0 21px rgb(255, 119, 109),
+        0 0 42px rgb(255, 119, 109),
+        0 0 82px rgb(255, 119, 109),
+        0 0 92px rgb(255, 119, 109),
+        0 0 102px rgb(255, 119, 109);
+    letter-spacing: 1.5px;
+    padding: 5px 0;
+}
+
+.counter-wrapper {
+    line-height: 1.5;
+    font-size: 1.3em;
+}
+
+.counter-wrapper h2 {
+    font-size: 2.5em;
+}
+
 
 .plays-counter {
     display: grid;
@@ -19,30 +53,44 @@ body {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    border: 1px solid black;
-    width: 450px;
-    height: 450px;
+    /* grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr); */
+    grid-template-columns: repeat(3, 150px);
+    grid-template-rows: repeat(3, 150px);
+    /* border: 1px solid black; */
+    width: 470px;
+    height: 470px;
     margin: 20px auto;
+    gap: 10px;
+    /* text-align: center; */
 }
 
 .box {
     font-size: 7em;
-    border: 1px solid black;
     width: 150px;
     height: 150px;
-    display: grid;
+    display: grid; 
     align-items: center;
     justify-items: center;
+    background-color: #ffff;
+    border-radius: 15px;
+    color: rgba(202, 78, 69, 0.8);
+    box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
 }
 
 .game-complete-popup {
-    visibility: hidden;
+    /* visibility: hidden; */
 }
 
 
 .play-again-button {
     display: block;
-    margin: 20px auto;
+    margin: 15px auto;
+    font-size: 1.5em;
+    padding: 0.7em;
+    border-radius: 10px;
+    background-color: #fc594e;
+    color: #ffff;
+    border: none;
+    box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
 }
