@@ -126,6 +126,7 @@ header h1 {
     
     .plays-counter {
         padding-bottom: 5px;
+        width: 80%;
     }
     
     .turn-message {
@@ -184,6 +185,7 @@ header h1 {
     
     .plays-counter {
         padding-bottom: 7px;
+        width: 80%;
     }
     
     .turn-message {

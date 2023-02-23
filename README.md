@@ -1,5 +1,6 @@
 # Tic Tac Toe :x: :o:
 Hello, welcome to my ***first ever project***! :tada: 
+
 In a bit over 2 days, I created a Tic Tac Toe game using HTML/CSS/JavaScript.
 
 Grab a friend (or foe) and check out my game here: 
@@ -38,7 +39,7 @@ I then started building the basic layout of my page.
     }
     ```
 * Having multiple if else statements for each possible win condition for each player which meant I had 16 total when really only 3 was needed 
-* Classing each of the 9 separately and creating variables to return each element/box separately 
+* Classing each of the 9 boxes separately and creating variables to return each element/box separately 
 * Hard coding my congratulations message in my HTML which lead to my [first bug](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/f86091a81da32e9c49f93c8f487707fcf6ed705f) :bug:
     - My initial message was set as default for a win with a span to change the player number based on who won. 
     ```
@@ -64,44 +65,49 @@ I then started building the basic layout of my page.
 [Check out my final MVP here](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/f86091a81da32e9c49f93c8f487707fcf6ed705f)
 
 ## Refactoring my MVP 
-These where the fixes I made to refactor my MVP.
+These where the fixes I made to refactor my MVP:
+* [Removed the hard coded congratulations message](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/4790a722ed0490da94deec71d2cc584a428555a9) in the HTML file and added it in as a win statement.
+* [Removed the repetitive win conditions](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/f3dcebab1c47c8e9d27ea827e48519eba84fad4a) by adding the condition statements for Player 1 and Player 2 using OR (||). But this lead to a very long if condition... This was the resulting condition statement for Player 1 which was also repeated for Player 2:
+```
+if ((box1.textContent === "X" && box2.textContent === "X" && box3.textContent === "X") || (box4.textContent === "X" && box5.textContent === "X" && box6.textContent === "X") || (box7.textContent === "X" && box8.textContent === "X" && box9.textContent === "X") || (box1.textContent === "X" && box4.textContent === "X" && box7.textContent === "X") || (box2.textContent === "X" && box5.textContent === "X" && box8.textContent === "X") || (box3.textContent === "X" && box6.textContent === "X" && box9.textContent === "X") || (box1.textContent === "X" && box5.textContent === "X" && box9.textContent === "X") || (box3.textContent === "X" && box5.textContent === "X" && box7.textContent === "X")) {
+```
+* To [shorten my if condition](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/72854317dcf50081badbca43842bb79a788081be), I created an array with all possible win combinations. I then created two empty arrays which would collect the boxes clicked by each player using data attribute and array push method. I then created a function to check if the array of boxes clicked by each player matched any of the winning combinations. 
+    - Some issues I had with my initial code was my [function was returning undefined](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/c35be9091aab03e71018b66d433f067c834f0fdd) even though it was checking the array created by collected box numbers each time. 
+    - [The fix](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/72854317dcf50081badbca43842bb79a788081be) was to define a variable which would return true or false based on wehther there was a match compared to the winning array combinations. This boolean would then be used in the above repetitive if statement to return the results message.
+    - This also meant I could remove the classes and variables used to define each of the boxes separately.
+
+[Check out my refactored code here](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/72854317dcf50081badbca43842bb79a788081be)
+
+## Styling :art:
+### Early Stages with MVP 
+Styling with CSS was very basic in the early stages. I created a grid but made the height and width fixed on my grid and each individual box to ensure that I had a 9x9 square grid running so I could get started on the functionality of the game. This did the job but was not great for small screens.
+### Now let's add a bit of colour
+* Added gradient background 
 * 
 
-
-After my MVP was submitted- I removed the hard coded comment so that the comment can be adjusted in the JavaScript. I did this by combining all my possible winning conditions in my first if statemement using OR 
-
-However, this lead to a very long if condition statement and I was looking  for ways to figure out how to shorten this...
-- CONTINUE HERE 
-
-## Styling 
-### Early Stages with MVP 
-Styling with CSS was very basic in the early stages. I created a grid but made the height and width constant on my grid and each individual box to ensure that I had a 9x9 square grid running so I could get started on the functionality of the game. This did the job but was not great for small screens.
-
-### Fixing the grid formatting 
+[](/README%20images/Styling%20Screenshot%202023-02-23%20at%2011.23.33%20pm.png)
 
 
-## Adding some bonus features 
-Now that my code was refactored, time for the fun part...  adding in some bonus features
+## Adding Bonus Features :gift:
+Time for the fun part...  adding in some bonus features
+I went back to the drawing board to think of features to add:
 https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2V
 
-### Keep track of multiple game rounds with a win counter
-I added a win count for each player and a tie counter
-### Adding a round counter 
+* Keep track of multiple game rounds with a [win counter](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/ba979167876b4633a2a3fc4537a20f6b50f4ef17)
+* Adding a [round counter](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/b3ebb66dd1e3cfdc1da110509746b694c225d2be) 
+* Adding a [hover feature](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/eca1676c78e1a86b25d4027a455d55842ec47fef) such that the box changes if on a potential move
+* [Changed the cursor](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/788a996a3b89034bfa984bd9e4b9bf7a57c58d41) to "pointer" on the boxes and button and "not-allowed" if the boxes have already been clicked or if there is a win.
+* Made [media queries](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/71d10d5e33f8eac1a81ce8b68e38541a7645c2c7) for tablet and phone sizes 
 
-### Adding a hover feature 
+## Unsolved Problems
+* Change the grid so that it dyanamically changes size depending on the screen as it is currently width/length is currently fixed
+    * I haven't found a way yet to be able to centre the grid on the page and not cause it to shrink without fixing the width/length.
+* The tie counter increments in 8's everytime there is a tie. A temporary fix is dividing this number by 8 but there are times it doesn't give a whole number.
 
-### Changed cursor to pointer to click boxes/button and non allowed on boxes that can't be clicked
-
-## Things that I want to do to improve my game 
-* Change the grid so that it dyanamically changes size and is a better user experience for small screens and phones - a quick fix would be doing a media inquiry 
-* Fix the size too bix for laptop, was ok on desktop 
+## Improvements to my code
 * Add classes for my CSS styling and use class lists to add them in and out
 
-
+## Future features I want to add to my game
 
 ## Known bugs
 * The tie counter increments in 8's everytime there is a tie. A temporary fix is dividing this number by 8 but there are times it doesn't give a whole number.
-
-## The Final Product 
-
-## Some Changes I would like to make in future: 
