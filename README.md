@@ -11,7 +11,9 @@ Next I added functinality to my board such  that for each player and hard coded 
 
 Some issues from my initial wireframe was that I my draw message overwrote my span. An initial fix was to rewrite my message such that the player number was at the end but this required me to manually change the visibility of the player. 
 
-After my MVP was submitted- I removed the hard coded comment so that the comment can be adjusted in the javascript. 
+After my MVP was submitted- I removed the hard coded comment so that the comment can be adjusted in the javascript. I did this by combining all my possible winning conditions in my first if statemement using OR 
+
+However, this lead to a very long if condition statement and I was looking  for ways to figure out how to shorten this...
 
 ## The Final Product 
 
