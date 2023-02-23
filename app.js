@@ -78,11 +78,11 @@ function handleHover () {
     if (numberOfTurns % 2 !== 0) {
         boxHovering.textContent = "O"
         boxHovering.style.backgroundColor = "rgba(202, 78, 69, 0.8)"
-        boxHovering.style.color = "#ffff"
+        boxHovering.style.color = "rgb(252, 245, 245)"
     } else {
         boxHovering.textContent = "X"
         boxHovering.style.backgroundColor = "rgba(202, 78, 69, 0.8)"
-        boxHovering.style.color = "#ffff"
+        boxHovering.style.color = "rgb(252, 245, 245)"
     }
 }
 
@@ -95,7 +95,7 @@ function handleHoverOff () {
     let boxHovering = event.target
     console.log(boxHovering);
     boxHovering.textContent = ""
-    boxHovering.style.backgroundColor = "#ffff"
+    boxHovering.style.backgroundColor = "rgb(252, 245, 245)"
     boxHovering.style.color = "rgba(202, 78, 69, 0.8)"
 }
 
@@ -108,7 +108,7 @@ function handleClick(event) {
     let boxClicked = event.target
     let boxNumberClicked = Number(boxClicked.dataset.num)
     numberOfTurns++
-    boxClicked.style.backgroundColor = "#ffff"
+    boxClicked.style.backgroundColor = "rgb(252, 245, 245)"
     boxClicked.style.color = "rgba(202, 78, 69, 0.8"
 
     if (numberOfTurns % 2 !== 0) {
