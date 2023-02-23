@@ -46,7 +46,6 @@ header h1 {
 .plays-counter {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    width: 450px;
     margin: 0 auto;
     padding-bottom: 8px;
 }
@@ -57,8 +56,6 @@ header h1 {
 
 .grid {
     display: grid;
-    /* grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr); */
     grid-template-columns: repeat(3, 130px);
     grid-template-rows: repeat(3, 130px);
     width: 402px;
@@ -97,4 +94,122 @@ header h1 {
     border: none;
     box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
     cursor: pointer;
+}
+
+@media (max-width: 414px) {
+    body {
+        width: 80%;
+        max-width: 400px;
+        margin: 10px auto;
+    }
+    
+    
+    header h1 {
+        font-size: 3em;
+        letter-spacing: 1.5px;
+    }
+    
+    .counter-wrapper {
+        line-height: 1;
+        font-size: 1em;
+        padding-top: 5px;
+    }
+    
+    .counter-wrapper h2 {
+        font-size: 1.6em;
+        margin-bottom: 0;
+    }
+    
+    .plays-counter {
+        padding-bottom: 5px;
+    }
+    
+    .turn-message {
+        padding: 5px 0;
+    }
+    
+    .grid {
+        grid-template-columns: repeat(3, 100px);
+        grid-template-rows: repeat(3, 100px);
+        width: 310px;
+        height: 310px;
+        margin: 20px auto;
+        gap: 5px;
+    }
+    
+    .box {
+        font-size: 5em;
+        width: 100px;
+        height: 100px;
+        display: grid; 
+        border-radius: 15px;
+        box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+    }
+    
+    .play-again-button {
+        margin: 15px auto;
+        font-size: 1em;
+        padding: 0.7em;
+        border-radius: 10px;
+        box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+    }
+}
+
+@media (min-width: 414px) and (max-width: 703px) {
+    body {
+        width: 80%;
+        max-width: 500px;
+        margin: 10px auto;
+    }
+    
+    
+    header h1 {
+        font-size: 4em;
+        letter-spacing: 1px;
+    }
+    
+    .counter-wrapper {
+        line-height: 1;
+        font-size: 1.1em;
+        padding-top: 7px;
+    }
+    
+    .counter-wrapper h2 {
+        font-size: 1.9em;
+        margin-bottom: 0;
+    }
+    
+    .plays-counter {
+        padding-bottom: 7px;
+    }
+    
+    .turn-message {
+        padding: 7px 0;
+    }
+    
+    .grid {
+        grid-template-columns: repeat(3, 120px);
+        grid-template-rows: repeat(3, 120px);
+        width: 370px;
+        height: 370px;
+        margin: 20px auto;
+        gap: 5px;
+    }
+    
+    .box {
+        font-size: 7em;
+        width: 120px;
+        height: 120px;
+        display: grid; 
+        border-radius: 15px;
+        box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+    }
+    
+    .play-again-button {
+        margin: 15px auto;
+        font-size: 1.1em;
+        padding: 0.7em;
+        border-radius: 10px;
+        box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+    }
 }
