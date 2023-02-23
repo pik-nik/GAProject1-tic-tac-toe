@@ -32,7 +32,9 @@ These were the goals that I had set in order to get a functional game running:
 * Having multiple if else statements for each possible win condition for each player which meant I had 16 total when really only 3 was needed 
 * Classing each box of the 9 separately and creating variables to return each element/box separately 
 * Hard coding my Congratulations message in my HTML which lead to my [first bug](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/f86091a81da32e9c49f93c8f487707fcf6ed705f) :bug:
-    ![bug 1](README%20images/First%20Bug%20Screenshot%202023-02-22%20at%204.19.49%20pm.png)*The message reads that it is a tie even though Player 2 has won*
+    ![bug 1](README%20images/First%20Bug%20Screenshot%202023-02-22%20at%204.19.49%20pm.png)
+    *The message reads that it is a tie even though Player 2 has won*
+
     - My initial message was set as default for a win with a span to change the player number based on who won. 
     ```
     <p class="game-complete-message">Congratulations, Player <span class="winning-player-number"></span> has won!</p>
@@ -59,9 +61,14 @@ However, this lead to a very long if condition statement and I was looking  for 
 
 
 ## Adding some bonus features 
-Now that my code was refactored, time for the fun part...  adding in some bonus features 
+Now that my code was refactored, time for the fun part...  adding in some bonus features
+https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2V
 
+# Keep track of multiple game rounds with a win counter
+I added a win count for each player and a tie counter
 
+## Known bugs
+* The tie counter increments in 8's everytime there is a tie. A temporary fix is dividing this number by 8 so the number displayed is accurate.
 
 ## The Final Product 
 
