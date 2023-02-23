@@ -40,6 +40,7 @@ function checkIfPlayerWins() {
         if (doesPlayer1Win) {
             boxes.forEach(box => {
                 box.removeEventListener("click", handleClick)
+                box.removeEventListener("mouseover", handleHover)  
             });
             resultsMessage.textContent = "Congratulations, Player 1 is the winner!"
             gameCompletePopup.style.visibility = "visible"
@@ -49,6 +50,7 @@ function checkIfPlayerWins() {
         } else if (doesPlayer2Win) {
             boxes.forEach(box => {
                 box.removeEventListener("click", handleClick)
+                box.removeEventListener("mouseover", handleHover)  
             });
             resultsMessage.textContent = "Congratulations, Player 2 is the winner!"
             gameCompletePopup.style.visibility = "visible"
@@ -67,43 +69,45 @@ function checkIfPlayerWins() {
     })
 }
 
-//! add a class list to the box hovering
-// function handleHover () {
-//     console.log("hovering");
-//     let boxHovering = event.target
-//     console.log(boxHovering);
-//     if (numberOfTurns % 2 !== 0) {
-//         boxHovering.textContent = "O"
-//         boxHovering.style.backgroundColor = "gainsboro"
-//         boxHovering.style.color = "black"
-//     } else {
-//         boxHovering.textContent = "X"
-//         boxHovering.style.backgroundColor = "gainsboro"
-//         boxHovering.style.color = "black"
-//     }
-// }
-// function handleHoverOff () {
-//     console.log("not hovering");
-//     let boxHovering = event.target
-//     console.log(boxHovering);
-//     // boxHovering.textContent = "*"
-//     boxHovering.textContent = ""
-//     boxHovering.style.backgroundColor = "#ffff"
-//     boxHovering.style.color = "rgba(202, 78, 69, 0.8)"
-// }
+function handleHover () {
+    console.log("hovering");
+    let boxHovering = event.target
+    console.log(boxHovering);
+    if (numberOfTurns % 2 !== 0) {
+        boxHovering.textContent = "O"
+        boxHovering.style.backgroundColor = "rgba(202, 78, 69, 0.8)"
+        boxHovering.style.color = "#ffff"
+    } else {
+        boxHovering.textContent = "X"
+        boxHovering.style.backgroundColor = "rgba(202, 78, 69, 0.8)"
+        boxHovering.style.color = "#ffff"
+    }
+}
 
-// boxes.forEach(box => {
-//     box.addEventListener("mouseover", handleHover)
-// });
+boxes.forEach(box => {
+    box.addEventListener("mouseover", handleHover)
+});
 
-// boxes.forEach(box => {
-//     box.addEventListener("mouseout", handleHoverOff)
-// });
+function handleHoverOff () {
+    console.log("not hovering");
+    let boxHovering = event.target
+    console.log(boxHovering);
+    boxHovering.textContent = ""
+    boxHovering.style.backgroundColor = "#ffff"
+    boxHovering.style.color = "rgba(202, 78, 69, 0.8)"
+}
+
+boxes.forEach(box => {
+    box.addEventListener("mouseout", handleHoverOff)
+});
 
 function handleClick(event) {
+    console.log("clicking");
     let boxClicked = event.target
     let boxNumberClicked = Number(boxClicked.dataset.num)
     numberOfTurns++
+    boxClicked.style.backgroundColor = "#ffff"
+    boxClicked.style.color = "rgba(202, 78, 69, 0.8"
 
     if (numberOfTurns % 2 !== 0) {
         boxClicked.textContent = "X"
@@ -114,7 +118,9 @@ function handleClick(event) {
         boxNumbersClickedByPlayer2.push(boxNumberClicked)
         playerNumber.textContent = 1
     }
-    boxClicked.removeEventListener("click", handleClick)    
+    boxClicked.removeEventListener("click", handleClick)
+    boxClicked.removeEventListener("mouseover", handleHover) 
+    boxClicked.removeEventListener("mouseout", handleHoverOff)      
 
     checkIfPlayerWins()
 }
@@ -127,6 +133,8 @@ function resetGame() {
     boxes.forEach(box => {
         box.textContent = ""
         box.addEventListener("click", handleClick)
+        box.addEventListener("mouseover", handleHover) 
+        box.addEventListener("mouseout", handleHoverOff)    
     })
     gameCompletePopup.style.visibility = "hidden"
     turnMessage.style.visibility = "visible"
@@ -139,6 +147,3 @@ function resetGame() {
 }
 
 playAgainBtn.addEventListener("click", resetGame)
-
-
-
