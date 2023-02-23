@@ -2,6 +2,7 @@ let boxes = document.querySelectorAll(".box")
 let player1WinCount = document.querySelector(".player1-win-count")
 let player2WinCount = document.querySelector(".player2-win-count")
 let tiesCount = document.querySelector(".ties-count")
+let roundsCount = document.querySelector(".rounds-count")
 let turnMessage = document.querySelector(".turn-message")
 let playerNumber = document.querySelector(".player-number")
 let gameCompletePopup = document.querySelector(".game-complete-popup")
@@ -12,6 +13,7 @@ let numberOfTurns = 0
 let numberOfPlayer1wins = 0 
 let numberOfPlayer2wins = 0 
 let numberOfTies = 0
+let numberOfRounds = 1
 
 let waysToWin = [
     [1, 2, 3],
@@ -92,13 +94,15 @@ function resetGame() {
     boxes.forEach(box => {
         box.textContent = ""
         box.addEventListener("click", handleClick)
-        gameCompletePopup.style.visibility = "hidden"
-        turnMessage.style.visibility = "visible"
-        numberOfTurns = 0
-        playerNumber.textContent = 1
-        boxNumbersClickedByPlayer1 = []
-        boxNumbersClickedByPlayer2 = []
-    });
+    })
+    gameCompletePopup.style.visibility = "hidden"
+    turnMessage.style.visibility = "visible"
+    numberOfTurns = 0
+    playerNumber.textContent = 1
+    boxNumbersClickedByPlayer1 = []
+    boxNumbersClickedByPlayer2 = []
+    numberOfRounds++
+    roundsCount.textContent = numberOfRounds
 }
 
 playAgainBtn.addEventListener("click", resetGame)

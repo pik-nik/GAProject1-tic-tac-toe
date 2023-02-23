@@ -59,16 +59,23 @@ After my MVP was submitted- I removed the hard coded comment so that the comment
 However, this lead to a very long if condition statement and I was looking  for ways to figure out how to shorten this...
 - CONTINUE HERE 
 
+## Styling 
+### Early Stages with MVP 
+Styling with CSS was very basic in the early stages. I created a grid but made the height and width constant on my grid and each individual box to ensure that I had a 9x9 square grid running so I could get started on the functionality of the game. This did the job but was not great for small screens.
+
+### Fixing the grid formatting 
+
 
 ## Adding some bonus features 
 Now that my code was refactored, time for the fun part...  adding in some bonus features
 https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2V
 
-# Keep track of multiple game rounds with a win counter
+### Keep track of multiple game rounds with a win counter
 I added a win count for each player and a tie counter
+### Adding a round counter 
 
 ## Known bugs
-* The tie counter increments in 8's everytime there is a tie. A temporary fix is dividing this number by 8 so the number displayed is accurate.
+* The tie counter increments in 8's everytime there is a tie. A temporary fix is dividing this number by 8 but there are times it doesn't give a whole number.
 
 ## The Final Product 
 
