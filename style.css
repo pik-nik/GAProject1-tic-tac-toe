@@ -76,6 +76,7 @@ header h1 {
     border-radius: 15px;
     color: rgba(202, 78, 69, 0.8);
     box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+    cursor: pointer;
 }
 
 .game-complete-popup {
@@ -93,4 +94,5 @@ header h1 {
     color: #ffff;
     border: none;
     box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+    cursor: pointer;
 }

@@ -40,7 +40,8 @@ function checkIfPlayerWins() {
         if (doesPlayer1Win) {
             boxes.forEach(box => {
                 box.removeEventListener("click", handleClick)
-                box.removeEventListener("mouseover", handleHover)  
+                box.removeEventListener("mouseover", handleHover)
+                box.style.cursor = "not-allowed" 
             });
             resultsMessage.textContent = "Congratulations, Player 1 is the winner!"
             gameCompletePopup.style.visibility = "visible"
@@ -50,7 +51,8 @@ function checkIfPlayerWins() {
         } else if (doesPlayer2Win) {
             boxes.forEach(box => {
                 box.removeEventListener("click", handleClick)
-                box.removeEventListener("mouseover", handleHover)  
+                box.removeEventListener("mouseover", handleHover)
+                box.style.cursor = "not-allowed"   
             });
             resultsMessage.textContent = "Congratulations, Player 2 is the winner!"
             gameCompletePopup.style.visibility = "visible"
@@ -120,7 +122,8 @@ function handleClick(event) {
     }
     boxClicked.removeEventListener("click", handleClick)
     boxClicked.removeEventListener("mouseover", handleHover) 
-    boxClicked.removeEventListener("mouseout", handleHoverOff)      
+    boxClicked.removeEventListener("mouseout", handleHoverOff)
+    boxClicked.style.cursor = "not-allowed"      
 
     checkIfPlayerWins()
 }
@@ -134,7 +137,8 @@ function resetGame() {
         box.textContent = ""
         box.addEventListener("click", handleClick)
         box.addEventListener("mouseover", handleHover) 
-        box.addEventListener("mouseout", handleHoverOff)    
+        box.addEventListener("mouseout", handleHoverOff) 
+        box.style.cursor = "pointer"    
     })
     gameCompletePopup.style.visibility = "hidden"
     turnMessage.style.visibility = "visible"

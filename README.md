@@ -76,6 +76,8 @@ I added a win count for each player and a tie counter
 
 ### Adding a hover feature 
 
+### Changed cursor to pointer to click boxes/button and non allowed on boxes that can't be clicked
+
 ## Things that I want to do to improve my game 
 * Change the grid so that it dyanamically changes size and is a better user experience for small screens and phones - a quick fix would be doing a media inquiry 
 * Fix the size too bix for laptop, was ok on desktop 
