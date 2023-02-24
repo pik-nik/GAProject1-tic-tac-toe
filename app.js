@@ -9,7 +9,7 @@ let gameCompletePopup = document.querySelector(".game-complete-popup")
 let resultsMessage = document.querySelector(".results-message")
 let playAgainBtn = document.querySelector(".play-again-button")
 
-let numberOfTurns = 0
+let numberOfPlays = 0
 let numberOfPlayer1wins = 0 
 let numberOfPlayer2wins = 0 
 let numberOfTies = 0
@@ -59,7 +59,7 @@ function checkIfPlayerWins() {
             turnMessage.style.visibility = "hidden"
             numberOfPlayer2wins++
             player2WinCount.textContent = numberOfPlayer2wins
-        } else if (numberOfTurns === 9) {
+        } else if (numberOfPlays === 9) {
             resultsMessage.textContent = "Awww, it's a tie"
             gameCompletePopup.style.visibility = "visible"
             turnMessage.style.visibility = "hidden"
@@ -75,7 +75,7 @@ function handleHover () {
     let boxHovering = event.target
 
     if (numberOfRounds % 2 !== 0) {
-        if (numberOfTurns % 2 !== 0) {
+        if (numberOfPlays % 2 !== 0) {
             boxHovering.textContent = "O"
             boxHovering.classList.add("hovering")
         } else {
@@ -83,7 +83,7 @@ function handleHover () {
             boxHovering.classList.add("hovering")
         }
     } else {
-        if (numberOfTurns % 2 !== 0) {
+        if (numberOfPlays % 2 !== 0) {
             boxHovering.textContent = "X"
             boxHovering.classList.add("hovering")
         } else {
@@ -110,11 +110,11 @@ boxes.forEach(box => {
 function handleClick(event) {
     let boxClicked = event.target
     let boxNumberClicked = Number(boxClicked.dataset.num)
-    numberOfTurns++
+    numberOfPlays++
     boxClicked.classList.add("clicked")
 
     if (numberOfRounds % 2 !== 0) {
-        if (numberOfTurns % 2 !== 0) {
+        if (numberOfPlays % 2 !== 0) {
             boxClicked.textContent = "X"
             boxNumbersClickedByPlayer1.push(boxNumberClicked)
             playerNumber.textContent = 2
@@ -124,7 +124,7 @@ function handleClick(event) {
             playerNumber.textContent = 1
         }
     } else {
-        if (numberOfTurns % 2 !== 0) {
+        if (numberOfPlays % 2 !== 0) {
             boxClicked.textContent = "O"
             boxNumbersClickedByPlayer2.push(boxNumberClicked)
             playerNumber.textContent = 1
@@ -159,7 +159,7 @@ function resetGame() {
     })
     gameCompletePopup.style.visibility = "hidden"
     turnMessage.style.visibility = "visible"
-    numberOfTurns = 0
+    numberOfPlays = 0
     boxNumbersClickedByPlayer1 = []
     boxNumbersClickedByPlayer2 = []
 
@@ -168,7 +168,7 @@ function resetGame() {
     } else {
         playerNumber.textContent = 1
     }
-    
+
     numberOfRounds++
     roundsCount.textContent = numberOfRounds
 }

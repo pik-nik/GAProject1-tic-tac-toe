@@ -88,7 +88,7 @@ Styling with CSS was very basic in the early stages. I created a grid but made t
 ![](README%20images/Styling%20Screenshot%202023-02-23%20at%2011.23.33%20pm.png)
 
 
-## Adding Bonus Features :gift:
+## Bonus Features :gift:
 Time for the fun part...  adding in some bonus features
 I went back to the drawing board to think of features to add:
 https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2V
@@ -98,6 +98,7 @@ https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2
 * Adding a [hover feature](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/eca1676c78e1a86b25d4027a455d55842ec47fef) such that the box changes if on a potential move
 * [Changed the cursor](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/788a996a3b89034bfa984bd9e4b9bf7a57c58d41) to "pointer" on the boxes and button and "not-allowed" if the boxes have already been clicked or if there is a win.
 * Made [media queries](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/71d10d5e33f8eac1a81ce8b68e38541a7645c2c7) for tablet and phone sizes 
+* [Alternate starting players](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/54176825f63d864aa5748aecf3c13a3a38e934b6). The first move matters and in the original version there was bias for Player 1 to win as they started first in all rounds. In the updated version, the players alternate starting first in each round.
 
 ## Bugs :bug:
 * The tie counter incremented in 8's (most of the time) when there was a tie. 
@@ -113,7 +114,8 @@ https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2
             tiesCount.textContent = numberOfRounds - numberOfPlayer1wins - numberOfPlayer2wins
         }
     ```
-    - [Another fix I tried which didn't work](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/9aa3735630ed4bd71575a301fb0684052104bfcd) waS removing the else if statement for `numberOfTurns === 9` out of the  `waysToWin.forEach()` function to it's own if statement in the `checkIfPlayerWins()` function to stop it from incrementing as it went through each of the 8 win patterns in the `waysToWin` array. This didn't work as if a player won on the 9th turn, the tie message would override the win message. 
+    - [Another fix I tried which didn't work](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/9aa3735630ed4bd71575a301fb0684052104bfcd) was removing the else if statement for `numberOfTurns === 9` out of the  `waysToWin.forEach()` function to it's own if statement in the `checkIfPlayerWins()` function to stop it from incrementing as it went through each of the 8 win patterns in the `waysToWin` array. This didn't work as if a player won on the 9th turn, the tie message would override the win message. 
+    *Note: Since the above, I have renamed `numberOfTurns` to `numberOfPlays` so the function `handleHover()` makes more sense*
     ![Bug: Ties message overrode the win message](README%20images/Bug%20tie%20message%20override%20win%20Screenshot%202023-02-24%20at%2011.16.20%20am.png) 
     
     *The message says it's a tie when it is a win for Player 1 (X)*
@@ -124,7 +126,6 @@ https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2
     - I haven't found a way yet to be able to centre the grid on the page and not cause it to shrink without fixing the width/length.
 
 ## Future features I want to add :bulb:
-* Alternate starting players
 * Add 1 player option to play with computer
 * Let players customise names, profiles, board size and token
 * add animations and audio 
