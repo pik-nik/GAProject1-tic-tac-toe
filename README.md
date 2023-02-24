@@ -85,7 +85,7 @@ if ((box1.textContent === "X" && box2.textContent === "X" && box3.textContent ==
 ### Early Stages with MVP 
 Styling with CSS was very basic in the early stages. I created a grid but made the height and width fixed on my grid and each individual box to ensure that I had a 9x9 square grid running so I could get started on the functionality of the game. This did the job but was not great for small screens.
 ### Now let's add a bit of colour
-![](README%20images/Styling%20Screenshot%202023-02-23%20at%2011.23.33%20pm.png)
+![](README%20images/game%20on%20diff%20screens.jpg)
 
 
 ## Bonus Features :gift:
@@ -124,7 +124,7 @@ https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2
     *Note: Since the above, I have [renamed](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/03f3bdcca5f657e4b0fb1f778873198592c3be77) `numberOfTurns` to `numberOfPlays` so the function `handleHover()` makes more sense*
 
 
-    ![Bug: Ties message overrode the win message](README%20images/game%20on%20diff%20screens.jpg) 
+    ![Bug: Ties message overrode the win message](/README%20images/Bug%20tie%20message%20override%20win%20Screenshot%202023-02-24%20at%2011.16.20%20am.png) 
     
     *The message says it's a tie when it is a win for Player 1 (X)*
     - FUTURE CHANGES: create better code for `tiesCount.textContent`
