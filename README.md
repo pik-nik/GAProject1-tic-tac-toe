@@ -85,7 +85,7 @@ if ((box1.textContent === "X" && box2.textContent === "X" && box3.textContent ==
 ### Early Stages with MVP 
 Styling with CSS was very basic in the early stages. I created a grid but made the height and width fixed on my grid and each individual box to ensure that I had a 9x9 square grid running so I could get started on the functionality of the game. This did the job but was not great for small screens.
 ### Now let's add a bit of colour
-![](README%20images/game%20on%20diff%20screens.jpg)
+![](/README%20images/Styling%20Screenshot%202023-02-23%20at%2011.23.33%20pm.png)
 
 
 ## Bonus Features :gift:
@@ -99,7 +99,7 @@ https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2
 * [Changed the cursor](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/788a996a3b89034bfa984bd9e4b9bf7a57c58d41) to "pointer" on the boxes and button and "not-allowed" if the boxes have already been clicked or if there is a win.
 * Made [media queries](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/71d10d5e33f8eac1a81ce8b68e38541a7645c2c7) for tablet, phones and [large desktops](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/f629260442f6fbeda0aa4171f4aeb5c3e4532532). 
 
-    ![](README%20images/Mediaqueries.jpg)
+    ![](README%20images/game%20on%20diff%20screens.jpg)
 
     *How the game looks on a 34" desktop monitor, 13" laptop and a 5.4" phone*
 
