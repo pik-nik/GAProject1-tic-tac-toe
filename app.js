@@ -59,15 +59,16 @@ function checkIfPlayerWins() {
             turnMessage.style.visibility = "hidden"
             numberOfPlayer2wins++
             player2WinCount.textContent = numberOfPlayer2wins
+        } else if (numberOfTurns === 9) {
+            resultsMessage.textContent = "Awww, it's a tie"
+            gameCompletePopup.style.visibility = "visible"
+            turnMessage.style.visibility = "hidden"
+            // numberOfTies++
+            // tiesCount.textContent = numberOfTies/8 
+            tiesCount.textContent = numberOfRounds - numberOfPlayer1wins - numberOfPlayer2wins
         }
     })
-    if (numberOfTurns === 9) {
-        resultsMessage.textContent = "Awww, it's a tie"
-        gameCompletePopup.style.visibility = "visible"
-        turnMessage.style.visibility = "hidden"
-        numberOfTies++
-        tiesCount.textContent = numberOfTies
-    }
+
 }
 
 function handleHover () {

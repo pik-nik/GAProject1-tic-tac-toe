@@ -23,6 +23,7 @@ These were the goals that I had set in order to get a functional game running:
 I started off by creating a wireframe to jot down initial thoughts and work out how I would like to structure my page. You can check out my wireframe here: https://whimsical.com/tic-tac-toe-wireframe-W5MCxfLSh4HVPx8P7Ck63V
 
 I then started building the basic layout of my page.
+
 ![](README%20images/Screenshot%201%20Initial%20Planning%202023-02-22%20at%201.55.56%20pm.png)
 *Initial planning replicating the styling of my wireframe using HTML/CSS*
 
@@ -51,6 +52,7 @@ I then started building the basic layout of my page.
     ```
 
     ![bug 1](README%20images/First%20Bug%20Screenshot%202023-02-22%20at%204.19.49%20pm.png)
+    
     *The message reads that it is a tie even though Player 2 has won*
 
     - My initial fix was to change the text content back to the default Congratulations message in my `resetGame()` function, but the span was still overwritten. 
@@ -64,7 +66,7 @@ I then started building the basic layout of my page.
 
 [Check out my final MVP here](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/f86091a81da32e9c49f93c8f487707fcf6ed705f)
 
-## Refactoring my MVP 
+## Refactoring my MVP :hammer_and_wrench:	
 These where the fixes I made to refactor my MVP:
 * [Removed the hard coded congratulations message](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/4790a722ed0490da94deec71d2cc584a428555a9) in the HTML file and added it in as a win statement.
 * [Removed the repetitive win conditions](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/f3dcebab1c47c8e9d27ea827e48519eba84fad4a) by adding the condition statements for Player 1 and Player 2 using OR (||). But this lead to a very long if condition... This was the resulting condition statement for Player 1 which was also repeated for Player 2:
@@ -96,16 +98,27 @@ https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2
 * [Changed the cursor](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/788a996a3b89034bfa984bd9e4b9bf7a57c58d41) to "pointer" on the boxes and button and "not-allowed" if the boxes have already been clicked or if there is a win.
 * Made [media queries](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/71d10d5e33f8eac1a81ce8b68e38541a7645c2c7) for tablet and phone sizes 
 
-## Bugs :bug:
-* The tie counter incremented in 8's everytime there is a tie. A temporary fix was dividing `numberOfTies` by 8 but there were also some times it incremented in other numbers.
-    - SOLVED: The fix was to remove the last else if statement for `numberOfTuirns === 9` out of the  `waysToWin.forEach()` function to it's own if statement in the `checkIfPlayerWins()` function. This is as it was incrementing as it went through each of the 8 win patterns in the `waysToWin` array.
+## Bugs and Unsolved Problems :bug:
+* The tie counter incremented in 8's (most of the time) when there was a tie. 
+    - [Temporary fix](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/ba979167876b4633a2a3fc4537a20f6b50f4ef17): Dividing `numberOfTies` by 8 worked most of the time but there were also some times it incremented in other numbers.
+    - 2nd slightly better temporary fix: Due to time constraints, the best fix I could do was making the ties counter equal to number of rounds player subtract the number of times each player has won.
+    ```
+        } else if (numberOfTurns === 9) {
+            resultsMessage.textContent = "Awww, it's a tie"
+            gameCompletePopup.style.visibility = "visible"
+            turnMessage.style.visibility = "hidden"
+            // numberOfTies++
+            // tiesCount.textContent = numberOfTies/8 
+            tiesCount.textContent = numberOfRounds - numberOfPlayer1wins - numberOfPlayer2wins
+        }
+    ```
+    - [Another fix I tried which didn't work](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/9aa3735630ed4bd71575a301fb0684052104bfcd) included removing the else if statement for `numberOfTurns === 9` out of the  `waysToWin.forEach()` function to it's own if statement in the `checkIfPlayerWins()` function to stop it from incrementing as it went through each of the 8 win patterns in the `waysToWin` array. This didn't work as if a player won on the 9th turn, the tie message would override the win message. 
+    ![Bug: Ties message overrode the win message](README%20images/Bug%20tie%20message%20override%20win%20Screenshot%202023-02-24%20at%2011.16.20%20am.png) *The message says it's a tie when it is a win for Player 1 (X)*
+    - FUTURE CHANGES: create better code for ties content changing the ties counter to equal the rounds counter subtract the number of times each player has won. 
 
-## Unsolved Problems
+## Unsolved Problems :question:
 * Change the grid so that it dyanamically changes size depending on the screen as it is currently width/length is currently fixed
     * I haven't found a way yet to be able to centre the grid on the page and not cause it to shrink without fixing the width/length.
 
-## Improvements to my code
-* Add classes for my CSS styling and use class lists to add them in and out
-* Alternate starting turns
-## Future features I want to add to my game
-
+## Future features I want to add :memo:
+* Alternate starting players
