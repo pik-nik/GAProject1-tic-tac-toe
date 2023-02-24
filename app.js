@@ -45,6 +45,7 @@ function checkIfPlayerWins() {
             });
             resultsMessage.textContent = "Congratulations, Player 1 is the winner!"
             gameCompletePopup.style.visibility = "visible"
+            gameCompletePopup.classList.add("text-focus-in")
             turnMessage.style.visibility = "hidden"
             numberOfPlayer1wins++
             player1WinCount.textContent = numberOfPlayer1wins
@@ -56,12 +57,14 @@ function checkIfPlayerWins() {
             });
             resultsMessage.textContent = "Congratulations, Player 2 is the winner!"
             gameCompletePopup.style.visibility = "visible"
+            gameCompletePopup.classList.add("text-focus-in")
             turnMessage.style.visibility = "hidden"
             numberOfPlayer2wins++
             player2WinCount.textContent = numberOfPlayer2wins
         } else if (numberOfPlays === 9) {
             resultsMessage.textContent = "Awww, it's a tie"
             gameCompletePopup.style.visibility = "visible"
+            gameCompletePopup.classList.add("text-focus-in")
             turnMessage.style.visibility = "hidden"
             // numberOfTies++
             // tiesCount.textContent = numberOfTies/8 
@@ -73,22 +76,20 @@ function checkIfPlayerWins() {
 
 function handleHover () {
     let boxHovering = event.target
+    boxHovering.classList.add("pulsate-fwd")
+    boxHovering.classList.add("hovering")
 
     if (numberOfRounds % 2 !== 0) {
         if (numberOfPlays % 2 !== 0) {
             boxHovering.textContent = "O"
-            boxHovering.classList.add("hovering")
         } else {
             boxHovering.textContent = "X"
-            boxHovering.classList.add("hovering")
         }
     } else {
         if (numberOfPlays % 2 !== 0) {
             boxHovering.textContent = "X"
-            boxHovering.classList.add("hovering")
         } else {
             boxHovering.textContent = "O"
-            boxHovering.classList.add("hovering")
         }
     }
 }
@@ -101,6 +102,7 @@ function handleHoverOff () {
     let boxHovering = event.target
     boxHovering.textContent = ""
     boxHovering.classList.remove("hovering")
+    boxHovering.classList.remove("pulsate-fwd")
 }
 
 boxes.forEach(box => {
@@ -112,6 +114,7 @@ function handleClick(event) {
     let boxNumberClicked = Number(boxClicked.dataset.num)
     numberOfPlays++
     boxClicked.classList.add("clicked")
+    boxClicked.classList.add("flip-horizontal-top")
 
     if (numberOfRounds % 2 !== 0) {
         if (numberOfPlays % 2 !== 0) {
@@ -155,9 +158,12 @@ function resetGame() {
         box.addEventListener("mouseout", handleHoverOff) 
         box.style.cursor = "pointer"
         box.classList.remove("hovering")
-        box.classList.remove("clicked")    
+        box.classList.remove("clicked")   
+        box.classList.remove("flip-horizontal-top")
+        box.classList.remove("pulsate-fwd")
     })
     gameCompletePopup.style.visibility = "hidden"
+    gameCompletePopup.classList.remove("text-focus-in")
     turnMessage.style.visibility = "visible"
     numberOfPlays = 0
     boxNumbersClickedByPlayer1 = []
