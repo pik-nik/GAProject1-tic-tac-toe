@@ -73,12 +73,23 @@ function checkIfPlayerWins() {
 
 function handleHover () {
     let boxHovering = event.target
-    if (numberOfTurns % 2 !== 0) {
-        boxHovering.textContent = "O"
-        boxHovering.classList.add("hovering")
+
+    if (numberOfRounds % 2 !== 0) {
+        if (numberOfTurns % 2 !== 0) {
+            boxHovering.textContent = "O"
+            boxHovering.classList.add("hovering")
+        } else {
+            boxHovering.textContent = "X"
+            boxHovering.classList.add("hovering")
+        }
     } else {
-        boxHovering.textContent = "X"
-        boxHovering.classList.add("hovering")
+        if (numberOfTurns % 2 !== 0) {
+            boxHovering.textContent = "X"
+            boxHovering.classList.add("hovering")
+        } else {
+            boxHovering.textContent = "O"
+            boxHovering.classList.add("hovering")
+        }
     }
 }
 
@@ -102,15 +113,28 @@ function handleClick(event) {
     numberOfTurns++
     boxClicked.classList.add("clicked")
 
-    if (numberOfTurns % 2 !== 0) {
-        boxClicked.textContent = "X"
-        boxNumbersClickedByPlayer1.push(boxNumberClicked)
-        playerNumber.textContent = 2
+    if (numberOfRounds % 2 !== 0) {
+        if (numberOfTurns % 2 !== 0) {
+            boxClicked.textContent = "X"
+            boxNumbersClickedByPlayer1.push(boxNumberClicked)
+            playerNumber.textContent = 2
+        } else {
+            boxClicked.textContent = "O"
+            boxNumbersClickedByPlayer2.push(boxNumberClicked)
+            playerNumber.textContent = 1
+        }
     } else {
-        boxClicked.textContent = "O"
-        boxNumbersClickedByPlayer2.push(boxNumberClicked)
-        playerNumber.textContent = 1
+        if (numberOfTurns % 2 !== 0) {
+            boxClicked.textContent = "O"
+            boxNumbersClickedByPlayer2.push(boxNumberClicked)
+            playerNumber.textContent = 1
+        } else {
+            boxClicked.textContent = "X"
+            boxNumbersClickedByPlayer1.push(boxNumberClicked)
+            playerNumber.textContent = 2
+        }
     }
+
     boxClicked.removeEventListener("click", handleClick)
     boxClicked.removeEventListener("mouseover", handleHover) 
     boxClicked.removeEventListener("mouseout", handleHoverOff)
@@ -136,9 +160,15 @@ function resetGame() {
     gameCompletePopup.style.visibility = "hidden"
     turnMessage.style.visibility = "visible"
     numberOfTurns = 0
-    playerNumber.textContent = 1
     boxNumbersClickedByPlayer1 = []
     boxNumbersClickedByPlayer2 = []
+
+    if (numberOfRounds % 2 !== 0) {
+        playerNumber.textContent = 2
+    } else {
+        playerNumber.textContent = 1
+    }
+    
     numberOfRounds++
     roundsCount.textContent = numberOfRounds
 }

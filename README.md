@@ -55,6 +55,7 @@ I then started building the basic layout of my page.
     
     *The message reads that it is a tie even though Player 2 has won*
 
+
     - My initial fix was to change the text content back to the default Congratulations message in my `resetGame()` function, but the span was still overwritten. 
     - I then changed the message to read different so that I could change the number at the end of the sentence. 
         - This also mean't adding CSS styling to ensure the two paragraph tags were still read in the same line. 
@@ -98,10 +99,10 @@ https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2
 * [Changed the cursor](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/788a996a3b89034bfa984bd9e4b9bf7a57c58d41) to "pointer" on the boxes and button and "not-allowed" if the boxes have already been clicked or if there is a win.
 * Made [media queries](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/71d10d5e33f8eac1a81ce8b68e38541a7645c2c7) for tablet and phone sizes 
 
-## Bugs and Unsolved Problems :bug:
+## Bugs :bug:
 * The tie counter incremented in 8's (most of the time) when there was a tie. 
     - [Temporary fix](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/ba979167876b4633a2a3fc4537a20f6b50f4ef17): Dividing `numberOfTies` by 8 worked most of the time but there were also some times it incremented in other numbers.
-    - 2nd slightly better temporary fix: Due to time constraints, the best fix I could do was making the ties counter equal to number of rounds player subtract the number of times each player has won.
+    - [2nd slightly better temporary fix](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/7d64cb5fc1ca87a212437156dfb090431c7a42f7): Due to time constraints, the best fix I could do was making the ties counter equal to number of rounds player subtract the number of times each player has won.
     ```
         } else if (numberOfTurns === 9) {
             resultsMessage.textContent = "Awww, it's a tie"
@@ -112,13 +113,19 @@ https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2
             tiesCount.textContent = numberOfRounds - numberOfPlayer1wins - numberOfPlayer2wins
         }
     ```
-    - [Another fix I tried which didn't work](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/9aa3735630ed4bd71575a301fb0684052104bfcd) included removing the else if statement for `numberOfTurns === 9` out of the  `waysToWin.forEach()` function to it's own if statement in the `checkIfPlayerWins()` function to stop it from incrementing as it went through each of the 8 win patterns in the `waysToWin` array. This didn't work as if a player won on the 9th turn, the tie message would override the win message. 
-    ![Bug: Ties message overrode the win message](README%20images/Bug%20tie%20message%20override%20win%20Screenshot%202023-02-24%20at%2011.16.20%20am.png) *The message says it's a tie when it is a win for Player 1 (X)*
-    - FUTURE CHANGES: create better code for ties content changing the ties counter to equal the rounds counter subtract the number of times each player has won. 
+    - [Another fix I tried which didn't work](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/9aa3735630ed4bd71575a301fb0684052104bfcd) waS removing the else if statement for `numberOfTurns === 9` out of the  `waysToWin.forEach()` function to it's own if statement in the `checkIfPlayerWins()` function to stop it from incrementing as it went through each of the 8 win patterns in the `waysToWin` array. This didn't work as if a player won on the 9th turn, the tie message would override the win message. 
+    ![Bug: Ties message overrode the win message](README%20images/Bug%20tie%20message%20override%20win%20Screenshot%202023-02-24%20at%2011.16.20%20am.png) 
+    
+    *The message says it's a tie when it is a win for Player 1 (X)*
+    - FUTURE CHANGES: create better code for `tiesCount.textContent`
 
-## Unsolved Problems :question:
+## Things to improve :memo:
 * Change the grid so that it dyanamically changes size depending on the screen as it is currently width/length is currently fixed
-    * I haven't found a way yet to be able to centre the grid on the page and not cause it to shrink without fixing the width/length.
+    - I haven't found a way yet to be able to centre the grid on the page and not cause it to shrink without fixing the width/length.
 
-## Future features I want to add :memo:
+## Future features I want to add :bulb:
 * Alternate starting players
+* Add 1 player option to play with computer
+* Let players customise names, profiles, board size and token
+* add animations and audio 
+
