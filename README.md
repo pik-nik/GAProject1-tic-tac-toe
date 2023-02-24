@@ -94,10 +94,10 @@ I went back to the drawing board to think of features to add:
 https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2V
 
 * Keep track of multiple game rounds with a [win counter](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/ba979167876b4633a2a3fc4537a20f6b50f4ef17)
-* Adding a [round counter](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/b3ebb66dd1e3cfdc1da110509746b694c225d2be) 
-* Adding a [hover feature](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/eca1676c78e1a86b25d4027a455d55842ec47fef) such that the box changes if on a potential move
+* Added a [round counter](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/b3ebb66dd1e3cfdc1da110509746b694c225d2be) 
+* Added a [hover feature](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/eca1676c78e1a86b25d4027a455d55842ec47fef) such that the box changes if on a potential move
 * [Changed the cursor](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/788a996a3b89034bfa984bd9e4b9bf7a57c58d41) to "pointer" on the boxes and button and "not-allowed" if the boxes have already been clicked or if there is a win.
-* Made [media queries](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/71d10d5e33f8eac1a81ce8b68e38541a7645c2c7) for tablet and phone sizes 
+* Made [media queries](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/71d10d5e33f8eac1a81ce8b68e38541a7645c2c7) for tablet, phones and large desktops. 
 * [Alternate starting players](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/54176825f63d864aa5748aecf3c13a3a38e934b6). The first move matters and in the original version there was bias for Player 1 to win as they started first in all rounds. In the updated version, the players alternate starting first in each round.
 
 ## Bugs :bug:
@@ -115,7 +115,10 @@ https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2
         }
     ```
     - [Another fix I tried which didn't work](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/9aa3735630ed4bd71575a301fb0684052104bfcd) was removing the else if statement for `numberOfTurns === 9` out of the  `waysToWin.forEach()` function to it's own if statement in the `checkIfPlayerWins()` function to stop it from incrementing as it went through each of the 8 win patterns in the `waysToWin` array. This didn't work as if a player won on the 9th turn, the tie message would override the win message. 
-    *Note: Since the above, I have renamed `numberOfTurns` to `numberOfPlays` so the function `handleHover()` makes more sense*
+    
+    *Note: Since the above, I have [renamed](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/03f3bdcca5f657e4b0fb1f778873198592c3be77) `numberOfTurns` to `numberOfPlays` so the function `handleHover()` makes more sense*
+
+
     ![Bug: Ties message overrode the win message](README%20images/Bug%20tie%20message%20override%20win%20Screenshot%202023-02-24%20at%2011.16.20%20am.png) 
     
     *The message says it's a tie when it is a win for Player 1 (X)*
@@ -128,5 +131,5 @@ https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2
 ## Future features I want to add :bulb:
 * Add 1 player option to play with computer
 * Let players customise names, profiles, board size and token
-* add animations and audio 
+* Add animations and audio 
 

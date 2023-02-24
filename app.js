@@ -95,7 +95,7 @@ function handleHover () {
 
 boxes.forEach(box => {
     box.addEventListener("mouseover", handleHover)
-});
+})
 
 function handleHoverOff () {
     let boxHovering = event.target
@@ -105,7 +105,7 @@ function handleHoverOff () {
 
 boxes.forEach(box => {
     box.addEventListener("mouseout", handleHoverOff)
-});
+})
 
 function handleClick(event) {
     let boxClicked = event.target
