@@ -97,7 +97,12 @@ https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2
 * Added a [round counter](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/b3ebb66dd1e3cfdc1da110509746b694c225d2be) 
 * Added a [hover feature](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/eca1676c78e1a86b25d4027a455d55842ec47fef) such that the box changes if on a potential move
 * [Changed the cursor](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/788a996a3b89034bfa984bd9e4b9bf7a57c58d41) to "pointer" on the boxes and button and "not-allowed" if the boxes have already been clicked or if there is a win.
-* Made [media queries](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/71d10d5e33f8eac1a81ce8b68e38541a7645c2c7) for tablet, phones and large desktops. 
+* Made [media queries](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/71d10d5e33f8eac1a81ce8b68e38541a7645c2c7) for tablet, phones and [large desktops](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/f629260442f6fbeda0aa4171f4aeb5c3e4532532). 
+
+    ![](README%20images/Mediaqueries.jpg)
+
+    *How the game looks on a 34" desktop monitor, 13" laptop and a 5.4" phone*
+
 * [Alternate starting players](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/54176825f63d864aa5748aecf3c13a3a38e934b6). The first move matters and in the original version there was bias for Player 1 to win as they started first in all rounds. In the updated version, the players alternate starting first in each round.
 
 ## Bugs :bug:
