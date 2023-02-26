@@ -147,9 +147,9 @@ https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2
 * On single player mode, if there was a tie on an even round (2nd, 4th, 6th etc), the message doesnt appear. No issues with 2 player mode.
     - 26/02/2023 [RESOLVED](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/4da45e1cd2e297b1fa3d80f1170b6382380900fe) :white_check_mark: The `numberOfPlays` was incrementing after the second `checkIfPlayerWins()` hence on the 9th turn it wasn't meeting the requirements till after the function ran. The order was swapped around.
 *  In single player, after player 2 wins, there is a 1.5second lag where you can still press the remaining button, if this causes X to win it will then increment the score Player 1 = 1 and Player 2 = 2 (as it will run through the two `checkIfPlayerWins())
-    - 26/02/2023 RESOLVED :white_check_mark: Set a function in a `setTimeOut` which runs 1 millisecond after the computer has it's turn. In the function, only reactivate the click and mouseover event listeners `if (gameFinished === false)`
-
-// ? In single player, after player 2 wins, there is a 1.5second lag where you can still press the remaining buttons. If you click the button- player 2 will win twice, player 1 may win if there is a match too
+    - 26/02/2023 [RESOLVED](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/70d3dd007c670f949ff1f9ca79a891d8f208dc5c) :white_check_mark: Set a function in a `setTimeOut` which runs 1 millisecond after the computer has it's turn. In the function, only reactivate the click and mouseover event listeners `if (gameFinished === false)`
+* Computer playing over previously played boxes or playing multiple boxes at the same time on the second, fourth, sixth etc round. 
+    - 26/02/2023 RESOLVED :white_check_mark: Needed to empty array of `boxNumbersNotPlayed` after first move is made
 
 ## Things to improve :memo:
 * Change the grid so that it dyanamically changes size depending on the screen as it is currently width/length is currently fixed

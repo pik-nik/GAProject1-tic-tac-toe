@@ -294,9 +294,13 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
                         boxes[num-1].style.cursor = "pointer"  
                     }
                 }
+
+                boxNumbersNotPlayed = []
+
             }, 1500);
         
             numberOfPlays = 1
+            
         } else { 
             numberOfPlays = 0
             boxes.forEach(box => {
