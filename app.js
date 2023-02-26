@@ -32,8 +32,11 @@ let boxNumbersClickedByPlayer2 = []
 let boxNumbersPlayed = []
 let boxNumbersNotPlayed = []
 
+let gameFinished = false
+let gameHasWinner = false
 //? RESET BUTTON
-
+// ? Disable box clicking while computer is playing
+//! On single player mode If there is a tie on the second round, the message doesnt appear
 
 
 function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
@@ -64,8 +67,11 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
                 gameCompletePopup.style.visibility = "visible"
                 gameCompletePopup.classList.add("text-focus-in")
                 turnMessage.style.visibility = "hidden"
-                numberOfPlayer1wins++
+                numberOfPlayer1wins++                                          
                 player1WinCount.textContent = numberOfPlayer1wins
+                gameFinished = true
+                console.log("does player 1 win", doesPlayer1Win);
+                gameHasWinner = true
             } else if (doesPlayer2Win) {
                 boxes.forEach(box => {
                     box.removeEventListener("click", handleClickSinglePlayer)
@@ -76,16 +82,24 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
                 gameCompletePopup.style.visibility = "visible"
                 gameCompletePopup.classList.add("text-focus-in")
                 turnMessage.style.visibility = "hidden"
-                numberOfPlayer2wins++
+                numberOfPlayer2wins++                                            
                 player2WinCount.textContent = numberOfPlayer2wins
-            } else if (numberOfPlays === 9) {
-                resultsMessage.textContent = "Awww, it's a tie"
+                gameFinished = true
+                gameHasWinner = true
+            } else if (numberOfPlays === 9) { // be weary of this as it will run through the waysToWin array 8 times
                 gameCompletePopup.style.visibility = "visible"
                 gameCompletePopup.classList.add("text-focus-in")
                 turnMessage.style.visibility = "hidden"
-                tiesCount.textContent = numberOfRounds - numberOfPlayer1wins - numberOfPlayer2wins
+                gameFinished = true
+                console.log("tie runs?");
             }
         })
+        
+        if (numberOfPlays === 9 && gameHasWinner === false) { 
+            resultsMessage.textContent = "Awww, it's a tie"
+            numberOfTies++
+            tiesCount.textContent = numberOfTies
+        }
     }
 
     function handleHover () {
@@ -110,11 +124,11 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
         box.addEventListener("mouseout", handleHoverOff)
     })
 
-
     function handleClickSinglePlayer(event) {
         let boxClicked = event.target
         let boxNumberClicked = Number(boxClicked.dataset.num)
         numberOfPlays++
+        console.log("number of plays", numberOfPlays);
         boxClicked.classList.add("clicked")
         boxClicked.classList.add("flip-horizontal-top")
 
@@ -127,41 +141,42 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
         boxClicked.removeEventListener("mouseover", handleHover) 
         boxClicked.removeEventListener("mouseout", handleHoverOff)
         boxClicked.style.cursor = "not-allowed"    
-
-
+        
         checkIfPlayerWins()
-         // ! work out how to stop here if player 1 wins as it plays a turn for player 2
-         // ? Disable box clicking while computer is playing
-
-         if (!checkIfPlayerWins()){
+            
+        if (gameFinished === false) { // if game is not finished, then let the computer play a turn
             for(let num=1; num<=9; num++) {
                 if(!boxNumbersPlayed.includes(num)) {
                     boxNumbersNotPlayed.push(num);
                 }
             }
             console.log("box numbers not played",boxNumbersNotPlayed);
+
             let boxNumberPlayedByComputer = boxNumbersNotPlayed[Math.floor(Math.random() * boxNumbersNotPlayed.length)]
             boxNumbersNotPlayed = []
             console.log('box number played by computer', boxNumberPlayedByComputer);
-
+    
             boxes.forEach(box => { 
                 if (boxNumberPlayedByComputer === Number(box.dataset.num)){
                     box.removeEventListener("mouseover", handleHover) 
                     box.removeEventListener("mouseout", handleHoverOff)
+                    box.removeEventListener("click", handleClickSinglePlayer)
+                    box.style.cursor = "not-allowed"  
                     // ? have random delay time..
                     setTimeout(function() {
                         box.textContent = "O" 
                         box.classList.add("flip-horizontal-top")
                         boxNumbersClickedByPlayer2.push(boxNumberPlayedByComputer)
+                        console.log('box numbers clicked by player 2 array',boxNumbersClickedByPlayer2);
                         boxNumbersPlayed.push(boxNumberPlayedByComputer)
-                        console.log('array of numbers played',boxNumbersPlayed);
+                        checkIfPlayerWins() 
                         playerNumber.textContent = 1
+                        numberOfPlays++
+                        console.log("number of plays", numberOfPlays);
                     }, 1000);
                 }
             })
-        }  
-        checkIfPlayerWins() //! function doesnt check if comp is winner until after next click
-
+        }
     }
 
     boxes.forEach(box => {
@@ -183,11 +198,12 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
         gameCompletePopup.style.visibility = "hidden"
         gameCompletePopup.classList.remove("text-focus-in")
         turnMessage.style.visibility = "visible"
-        numberOfPlays = 0
         boxNumbersClickedByPlayer1 = []
         boxNumbersClickedByPlayer2 = []
         boxNumbersPlayed = []
         boxNumbersNotPlayed = []
+        gameFinished = false
+        gameHasWinner = false
     
         if (numberOfRounds % 2 !== 0) {
             playerNumber.textContent = 2
@@ -208,6 +224,8 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
                 if (firstBoxNumberPlayedByComputer === Number(box.dataset.num)){
                         box.removeEventListener("mouseover", handleHover) 
                         box.removeEventListener("mouseout", handleHoverOff)
+                        box.removeEventListener("click", handleClickSinglePlayer)
+                        box.style.cursor = "not-allowed"  
                         setTimeout(function() {
                             box.textContent = "O" 
                             box.classList.add("flip-horizontal-top")
@@ -222,7 +240,10 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
                 // }, 1000)
                 
             })
-        } 
+            numberOfPlays = 1
+        } else {
+            numberOfPlays = 0
+        }
     }
     
     playAgainBtn.addEventListener("click", resetGame)
@@ -267,6 +288,7 @@ function startTwoPlayerMode() { //* FOR TWO PLAYER MODE
                 turnMessage.style.visibility = "hidden"
                 numberOfPlayer1wins++
                 player1WinCount.textContent = numberOfPlayer1wins
+                gameHasWinner = true
             } else if (doesPlayer2Win) {
                 boxes.forEach(box => {
                     box.removeEventListener("click", handleClickTwoPlayer)
@@ -279,14 +301,18 @@ function startTwoPlayerMode() { //* FOR TWO PLAYER MODE
                 turnMessage.style.visibility = "hidden"
                 numberOfPlayer2wins++
                 player2WinCount.textContent = numberOfPlayer2wins
+                gameHasWinner = true
             } else if (numberOfPlays === 9) {
-                resultsMessage.textContent = "Awww, it's a tie"
                 gameCompletePopup.style.visibility = "visible"
                 gameCompletePopup.classList.add("text-focus-in")
                 turnMessage.style.visibility = "hidden"
-                tiesCount.textContent = numberOfRounds - numberOfPlayer1wins - numberOfPlayer2wins
             }
         })
+        if (numberOfPlays === 9 && gameHasWinner === false) { 
+            resultsMessage.textContent = "Awww, it's a tie"
+            numberOfTies++
+            tiesCount.textContent = numberOfTies
+        }
     }
     
     function handleHover () {
@@ -383,6 +409,7 @@ function startTwoPlayerMode() { //* FOR TWO PLAYER MODE
         numberOfPlays = 0
         boxNumbersClickedByPlayer1 = []
         boxNumbersClickedByPlayer2 = []
+        gameHasWinner = false
     
         if (numberOfRounds % 2 !== 0) {
             playerNumber.textContent = 2
@@ -399,4 +426,3 @@ function startTwoPlayerMode() { //* FOR TWO PLAYER MODE
 }
 
 twoPlayerMode.addEventListener("click", startTwoPlayerMode)
-

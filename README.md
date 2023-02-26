@@ -107,6 +107,7 @@ https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2
 
 * [Alternate starting players](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/54176825f63d864aa5748aecf3c13a3a38e934b6). The first move matters and in the original version there was bias for Player 1 to win as they started first in all rounds. In the updated version, the players alternate starting first in each round.
 * [Added animations](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/6cf0094dde944f84bfa68b96889db60a56b5a939) thanks to [Animista](https://animista.net/play)
+* Single player mode to play against the computer
 
 ## Bugs :bug:
 * The tie counter incremented in 8's (most of the time) when there was a tie. 
@@ -130,17 +131,30 @@ https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2
     ![Bug: Ties message overrode the win message](/README%20images/Bug%20tie%20message%20override%20win%20Screenshot%202023-02-24%20at%2011.16.20%20am.png) 
     
     *The message says it's a tie when it is a win for Player 1 (X)*
-    - FUTURE CHANGES: create better code for `tiesCount.textContent`
+    - Future changes needed: create better code for `tiesCount.textContent`
+    - 26/02/2023 RESOLVED :white_check_mark: Created a if statement ouside of the `waysToWin` array which is conditional to if the game doesn't have a winner.
+    ```
+        if (numberOfPlays === 9 && gameHasWinner === false) { 
+        numberOfTies++
+        tiesCount.textContent = numberOfTies
+        }
+    ```
+* If there is a win on the 9th round, the message is "Awww, it's a tie" instead of "Congratulations, Player 1/2 is the winner!" BUT the win counter indicates that there was a winner 
+    - 26/02/2023 RESOLVED :white_check_mark: Moved `resultsMessage.textContent = "Awww, it's a tie"` out of the `waysToWin` array like the preceding bug and moved it to the same new if statement which is conditional to if the game doesn't have a winner.
+
 
 ## Things to improve :memo:
 * Change the grid so that it dyanamically changes size depending on the screen as it is currently width/length is currently fixed
     - I haven't found a way yet to be able to centre the grid on the page and not cause it to shrink without fixing the width/length.
 
 ## Future features I want to add :bulb:
-* Add 1 player option to play with computer
 * Let players customise names, profiles, board size and token
 * Add audio 
 * Change the fonts
 * Add object to store names and win count
-* ONE PLAYER WORK IN PROGRESS 
+
+* turn off hover option when computer is playing 
+* computer thinking adjust anywhere from 1-3 seconds?
+
+
 
