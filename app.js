@@ -36,8 +36,8 @@ let boxNumbersNotPlayed = []
 let gameFinished = false
 let gameHasWinner = false
 //? RESET BUTTON
-// ? Disable box clicking while computer is playing
-//! On single player mode If there is a tie on the second round, the message doesnt appear. Fine for two player mode
+// ? In single player, after player 2 wins, there is a 1.5second lag where you can still press the remaining buttons
+
 
 singlePlayerMode.classList.add("pulsate-fwd")
 twoPlayerMode.classList.add("pulsate-fwd")
@@ -49,6 +49,7 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
     twoPlayerMode.classList.remove("pulsate-fwd")
     pickAMode.classList.remove("pulsate-fwd")
     pickAMode.style.visibility = "hidden"
+
     singlePlayerMode.classList.add("jello-horizontal")
     twoPlayerMode.removeEventListener("click", startTwoPlayerMode)
     singlePlayerMode.removeEventListener("click", startTwoPlayerMode)
@@ -82,11 +83,13 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
                 console.log("does player 1 win", doesPlayer1Win);
                 gameHasWinner = true
             } else if (doesPlayer2Win) {
-                boxes.forEach(box => {
+                setTimeout(() => {
+                    boxes.forEach(box => {
                     box.removeEventListener("click", handleClickSinglePlayer)
                     box.removeEventListener("mouseover", handleHover)
                     box.style.cursor = "not-allowed"   
-                });
+                    });
+                }, 1501);
                 resultsMessage.textContent = "The computer is the winner!"
                 gameCompletePopup.style.visibility = "visible"
                 gameCompletePopup.classList.add("text-focus-in")
@@ -154,6 +157,13 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
         boxClicked.style.cursor = "not-allowed"    
         
         checkIfPlayerWins()
+
+        boxes.forEach(box => {
+            box.removeEventListener("click", handleClickSinglePlayer)
+            box.removeEventListener("mouseover", handleHover)
+            box.style.cursor = "not-allowed"   
+        });
+
             
         if (gameFinished === false) { // if game is not finished, then let the computer play a turn
             for(let num=1; num<=9; num++) {
@@ -161,18 +171,20 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
                     boxNumbersNotPlayed.push(num);
                 }
             }
-            console.log("box numbers not played",boxNumbersNotPlayed);
+            console.log("box numbers not played before comp plays",boxNumbersNotPlayed);
 
             let boxNumberPlayedByComputer = boxNumbersNotPlayed[Math.floor(Math.random() * boxNumbersNotPlayed.length)]
-            boxNumbersNotPlayed = []
             console.log('box number played by computer', boxNumberPlayedByComputer);
+            for (let i = 0; i < boxNumbersNotPlayed.length; i++) {
+                if (boxNumbersNotPlayed[i] == boxNumberPlayedByComputer) {
+                    boxNumbersNotPlayed.splice(i,1); // remove box number played by computer from array of box numbers not played
+                }
+            }
+            console.log("box numbers not played after comp plays",boxNumbersNotPlayed); //* this work
+        
     
             boxes.forEach(box => { 
                 if (boxNumberPlayedByComputer === Number(box.dataset.num)){
-                    box.removeEventListener("mouseover", handleHover) 
-                    box.removeEventListener("mouseout", handleHoverOff)
-                    box.removeEventListener("click", handleClickSinglePlayer)
-                    box.style.cursor = "not-allowed"  
                     // ? have random delay time..
                     setTimeout(function() {
                         box.textContent = "O" 
@@ -184,10 +196,30 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
                         playerNumber.textContent = 1
                         numberOfPlays++
                         console.log("number of plays", numberOfPlays);
-                        checkIfPlayerWins() 
+                        checkIfPlayerWins()
                     }, 1000);
+                    setTimeout(function() {
+                        box.removeEventListener("mouseover", handleHover) 
+                        box.removeEventListener("mouseout", handleHoverOff)
+                        box.removeEventListener("click", handleClickSinglePlayer)
+                        box.style.cursor = "not-allowed"  // this disables the box played by comp
+                    }, 1001);
                 }
             })
+            
+            setTimeout(function() {
+                console.log(boxNumbersNotPlayed, "box numbers not played before loop is run"); 
+                for(let num=1; num<=9; num++) {
+                    if(boxNumbersNotPlayed.includes(num)) {
+                        boxes[num-1].addEventListener("click", handleClickSinglePlayer)
+                        boxes[num-1].addEventListener("mouseover", handleHover)
+                        boxes[num-1].style.cursor = "pointer"  
+                    }
+                    console.log(boxNumbersNotPlayed, "box numbers not played after loop is run");
+                    console.log("number reactivating click and mouseover",num);
+                }
+                boxNumbersNotPlayed = []
+            },1500)
         }
     }
 
@@ -198,10 +230,12 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
     function resetGame() {
         boxes.forEach(box => {
             box.textContent = ""
-            box.addEventListener("click", handleClickSinglePlayer)
-            box.addEventListener("mouseover", handleHover) 
-            box.addEventListener("mouseout", handleHoverOff) 
-            box.style.cursor = "pointer"
+            box.removeEventListener("click", handleClickSinglePlayer)
+            box.removeEventListener("mouseover", handleHover)
+            // box.addEventListener("click", handleClickSinglePlayer)
+            // box.addEventListener("mouseover", handleHover) 
+            // box.addEventListener("mouseout", handleHoverOff) 
+            // box.style.cursor = "pointer"
             box.classList.remove("hovering")
             box.classList.remove("clicked")   
             box.classList.remove("flip-horizontal-top")
@@ -226,13 +260,23 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
         numberOfRounds++
         roundsCount.textContent = numberOfRounds
 
-        //! TURN OFF HOVER UNTIL COMPUTER GO THEN TURN IT BACK ON BUT DISABLE FOR THE BOXED CLICKED
+        boxes.forEach(box => {
+            box.removeEventListener("click", handleClickSinglePlayer)
+            box.removeEventListener("mouseover", handleHover)
+            box.style.cursor = "not-allowed"   
+        });
+
         if (numberOfRounds % 2 === 0) {
             let firstBoxNumberPlayedByComputer = Math.ceil(Math.random() * 9)
                 console.log('first box number played by computer', firstBoxNumberPlayedByComputer);
                 boxNumbersPlayed.push(firstBoxNumberPlayedByComputer)
                 boxNumbersClickedByPlayer2.push(firstBoxNumberPlayedByComputer)
                 console.log("box numbers clicked by Player 2 on first go", boxNumbersClickedByPlayer2);
+                for(let num=1; num<=9; num++) {
+                    if(!boxNumbersPlayed.includes(num)) {
+                        boxNumbersNotPlayed.push(num);
+                    }
+                }
             boxes.forEach(box => { 
                 if (firstBoxNumberPlayedByComputer === Number(box.dataset.num)){
                         box.removeEventListener("mouseover", handleHover) 
@@ -246,16 +290,29 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
                             playerNumber.textContent = 1
                         }, 1000)
                 }
-                // setTimeout(function() {
-                //     box.addEventListener("click", handleClickSinglePlayer)
-                //     box.addEventListener("mouseover", handleHover) 
-                //     box.addEventListener("mouseout", handleHoverOff)
-                // }, 1000)
                 
             })
+            
+            setTimeout(() => {
+                for(let num=1; num<=9; num++) {
+                    if(boxNumbersNotPlayed.includes(num)) {
+                        boxes[num-1].addEventListener("click", handleClickSinglePlayer)
+                        boxes[num-1].addEventListener("mouseover", handleHover)
+                        boxes[num-1].addEventListener("mouseout", handleHoverOff) 
+                        boxes[num-1].style.cursor = "pointer"  
+                    }
+                }
+            }, 1500);
+        
             numberOfPlays = 1
-        } else {
+        } else { 
             numberOfPlays = 0
+            boxes.forEach(box => {
+                box.addEventListener("click", handleClickSinglePlayer)
+                box.addEventListener("mouseover", handleHover) 
+                box.addEventListener("mouseout", handleHoverOff) 
+                box.style.cursor = "pointer"
+            })
         }
     }
     
