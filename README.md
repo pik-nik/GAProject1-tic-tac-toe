@@ -7,6 +7,8 @@ Grab a friend (or foe) and check out my game here:
 
 https://pages.git.generalassemb.ly/piknik/project1_tic_tac_toe/
 
+NOTE ONE PLAYER WORK IN PROCESS
+
 ## Goals :rocket:
 These were the goals that I had set in order to get a functional game running: 
 * Create a basic 3x3 grid where each grid/box responds to a click 
@@ -104,7 +106,7 @@ https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2
     *How the game looks on a 34" desktop monitor, 13" laptop and a 5.4" phone*
 
 * [Alternate starting players](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/54176825f63d864aa5748aecf3c13a3a38e934b6). The first move matters and in the original version there was bias for Player 1 to win as they started first in all rounds. In the updated version, the players alternate starting first in each round.
-* Added animations thanks to [Animista](https://animista.net/play)
+* [Added animations](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/6cf0094dde944f84bfa68b96889db60a56b5a939) thanks to [Animista](https://animista.net/play)
 
 ## Bugs :bug:
 * The tie counter incremented in 8's (most of the time) when there was a tie. 
@@ -140,4 +142,5 @@ https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2
 * Add audio 
 * Change the fonts
 * Add object to store names and win count
+* ONE PLAYER WORK IN PROGRESS 
 

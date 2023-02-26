@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <h1 class="">Tic Tac Toe</h1>
-    </header>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tic Tac Toe</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1 class="">Tic Tac Toe</h1>
+        </header>
+        <aside>
+            <div>
+                <h3>Pick a mode</h3>
+                <ul class="list-of-modes">
+                    <li><button class="single-player-mode pick-mode pick-mode-btns">Single Player</button></li>
+                    <li><button class="two-player-mode pick-mode pick-mode-btns">Two Player</button></li>
+                </ul>
+            </div>
+        </aside>
     <div class="counter-wrapper">
         <div class="plays-counter">
             <p>Player 1: <span class="player1-win-count">0</span></p>
@@ -19,7 +28,6 @@
         </div>
         <p class="turn-message">It's Player <span class="player-number">1</span>'s turn</p>
         <h2>Round <span class="rounds-count">1</span></h2>
-        <!-- <p class="turn-message">It's Player <span class="player-number">1</span>'s turn</p> -->
     </div>
     <div class="grid">
         <div class="box" data-num="1"></div>
