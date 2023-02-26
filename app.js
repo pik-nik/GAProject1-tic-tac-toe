@@ -10,6 +10,7 @@ let resultsMessage = document.querySelector(".results-message")
 let playAgainBtn = document.querySelector(".play-again-button")
 let singlePlayerMode = document.querySelector(".single-player-mode")
 let twoPlayerMode = document.querySelector(".two-player-mode")
+let pickAMode = document.querySelector(".pick-a-mode")
 
 let numberOfPlays = 0
 let numberOfPlayer1wins = 0 
@@ -38,8 +39,16 @@ let gameHasWinner = false
 // ? Disable box clicking while computer is playing
 //! On single player mode If there is a tie on the second round, the message doesnt appear. Fine for two player mode
 
+singlePlayerMode.classList.add("pulsate-fwd")
+twoPlayerMode.classList.add("pulsate-fwd")
+pickAMode.classList.add("pulsate-fwd")
+
 
 function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
+    singlePlayerMode.classList.remove("pulsate-fwd")
+    twoPlayerMode.classList.remove("pulsate-fwd")
+    pickAMode.classList.remove("pulsate-fwd")
+    pickAMode.style.visibility = "hidden"
     singlePlayerMode.classList.add("jello-horizontal")
     twoPlayerMode.removeEventListener("click", startTwoPlayerMode)
     singlePlayerMode.removeEventListener("click", startTwoPlayerMode)
@@ -262,6 +271,10 @@ singlePlayerMode.addEventListener("click", startSinglePlayerMode)
 
 
 function startTwoPlayerMode() { //* FOR TWO PLAYER MODE
+    singlePlayerMode.classList.remove("pulsate-fwd")
+    twoPlayerMode.classList.remove("pulsate-fwd")
+    pickAMode.classList.remove("pulsate-fwd")
+    pickAMode.style.visibility = "hidden"
     singlePlayerMode.removeEventListener("click", startSinglePlayerMode)
     singlePlayerMode.style.backgroundColor = "grey"
     twoPlayerMode.classList.add("jello-horizontal")

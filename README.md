@@ -145,7 +145,7 @@ https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2
 * If there is a win on the 9th round, the message is "Awww, it's a tie" instead of "Congratulations, Player 1/2 is the winner!" BUT the win counter indicates that there was a winner 
     - 26/02/2023 [RESOLVED](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/021c89f5434e6151a45e93b4dd62d7a478d751d7) :white_check_mark: Moved `resultsMessage.textContent = "Awww, it's a tie"` out of the `waysToWin` array like the preceding bug and moved it to the same new if statement which is conditional to if the game doesn't have a winner.
 * On single player mode, if there was a tie on an even round (2nd, 4th, 6th etc), the message doesnt appear. No issues with 2 player mode.
-    - 26/0/2023 RESOLVED :white_check_mark: The `numberOfPlays` was incrementing after the second `checkIfPlayerWins()` hence on the 9th turn it wasn't meeting the requirements till after the function ran. The order was swapped around.
+    - 26/02/2023 [RESOLVED](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/4da45e1cd2e297b1fa3d80f1170b6382380900fe) :white_check_mark: The `numberOfPlays` was incrementing after the second `checkIfPlayerWins()` hence on the 9th turn it wasn't meeting the requirements till after the function ran. The order was swapped around.
 
 ## Things to improve :memo:
 * Change the grid so that it dyanamically changes size depending on the screen as it is currently width/length is currently fixed
@@ -159,6 +159,8 @@ https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2
 
 * turn off hover option when computer is playing 
 * computer thinking adjust anywhere from 1-3 seconds?
+
+* add animations on pick a mode so that player knows what to do first
 
 
 
