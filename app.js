@@ -36,7 +36,7 @@ let gameFinished = false
 let gameHasWinner = false
 //? RESET BUTTON
 // ? Disable box clicking while computer is playing
-//! On single player mode If there is a tie on the second round, the message doesnt appear
+//! On single player mode If there is a tie on the second round, the message doesnt appear. Fine for two player mode
 
 
 function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
@@ -91,7 +91,7 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
                 gameCompletePopup.classList.add("text-focus-in")
                 turnMessage.style.visibility = "hidden"
                 gameFinished = true
-                console.log("tie runs?");
+                console.log("tie message reveal runs?");
             }
         })
         
@@ -99,6 +99,7 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
             resultsMessage.textContent = "Awww, it's a tie"
             numberOfTies++
             tiesCount.textContent = numberOfTies
+            console.log(("tie message text runs?"))
         }
     }
 
@@ -135,6 +136,7 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
         boxClicked.textContent = "X"
         boxNumbersClickedByPlayer1.push(boxNumberClicked)
         boxNumbersPlayed.push(boxNumberClicked)
+        console.log('all box numbers played after player 1 goes', boxNumbersPlayed);
         playerNumber.textContent = 2
 
         boxClicked.removeEventListener("click", handleClickSinglePlayer)
@@ -169,10 +171,11 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
                         boxNumbersClickedByPlayer2.push(boxNumberPlayedByComputer)
                         console.log('box numbers clicked by player 2 array',boxNumbersClickedByPlayer2);
                         boxNumbersPlayed.push(boxNumberPlayedByComputer)
-                        checkIfPlayerWins() 
+                        console.log('all box numbers played after computer goes', boxNumbersPlayed);
                         playerNumber.textContent = 1
                         numberOfPlays++
                         console.log("number of plays", numberOfPlays);
+                        checkIfPlayerWins() 
                     }, 1000);
                 }
             })
@@ -220,6 +223,7 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
                 console.log('first box number played by computer', firstBoxNumberPlayedByComputer);
                 boxNumbersPlayed.push(firstBoxNumberPlayedByComputer)
                 boxNumbersClickedByPlayer2.push(firstBoxNumberPlayedByComputer)
+                console.log("box numbers clicked by Player 2 on first go", boxNumbersClickedByPlayer2);
             boxes.forEach(box => { 
                 if (firstBoxNumberPlayedByComputer === Number(box.dataset.num)){
                         box.removeEventListener("mouseover", handleHover) 

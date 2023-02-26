@@ -7,7 +7,7 @@ Grab a friend (or foe) and check out my game here:
 
 https://pages.git.generalassemb.ly/piknik/project1_tic_tac_toe/
 
-NOTE ONE PLAYER WORK IN PROCESS
+:construction: NOTE ONE PLAYER WORK IN PROCESS :construction:
 
 ## Goals :rocket:
 These were the goals that I had set in order to get a functional game running: 
@@ -105,9 +105,12 @@ https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2
 
     *How the game looks on a 34" desktop monitor, 13" laptop and a 5.4" phone*
 
+    :construction: *Note: while in the process of adding additional features, the game may not be as responsive as the original design* :construction:
+
 * [Alternate starting players](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/54176825f63d864aa5748aecf3c13a3a38e934b6). The first move matters and in the original version there was bias for Player 1 to win as they started first in all rounds. In the updated version, the players alternate starting first in each round.
 * [Added animations](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/6cf0094dde944f84bfa68b96889db60a56b5a939) thanks to [Animista](https://animista.net/play)
-* Single player mode to play against the computer
+* [Single player mode](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/021c89f5434e6151a45e93b4dd62d7a478d751d7) to play against the computer
+    - :construction: Currently working on turning off option to hover/click while it is the computer's turn :construction:
 
 ## Bugs :bug:
 * The tie counter incremented in 8's (most of the time) when there was a tie. 
@@ -132,7 +135,7 @@ https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2
     
     *The message says it's a tie when it is a win for Player 1 (X)*
     - Future changes needed: create better code for `tiesCount.textContent`
-    - 26/02/2023 RESOLVED :white_check_mark: Created a if statement ouside of the `waysToWin` array which is conditional to if the game doesn't have a winner.
+    - 26/02/2023 [RESOLVED](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/021c89f5434e6151a45e93b4dd62d7a478d751d7) :white_check_mark: Created a if statement ouside of the `waysToWin` array which is conditional to if the game doesn't have a winner.
     ```
         if (numberOfPlays === 9 && gameHasWinner === false) { 
         numberOfTies++
@@ -140,8 +143,9 @@ https://whimsical.com/tic-tac-toe-wireframe-bonus-features-7SGCq5qfDiBGL6h2QrAP2
         }
     ```
 * If there is a win on the 9th round, the message is "Awww, it's a tie" instead of "Congratulations, Player 1/2 is the winner!" BUT the win counter indicates that there was a winner 
-    - 26/02/2023 RESOLVED :white_check_mark: Moved `resultsMessage.textContent = "Awww, it's a tie"` out of the `waysToWin` array like the preceding bug and moved it to the same new if statement which is conditional to if the game doesn't have a winner.
-
+    - 26/02/2023 [RESOLVED](https://git.generalassemb.ly/piknik/project1_tic_tac_toe/commit/021c89f5434e6151a45e93b4dd62d7a478d751d7) :white_check_mark: Moved `resultsMessage.textContent = "Awww, it's a tie"` out of the `waysToWin` array like the preceding bug and moved it to the same new if statement which is conditional to if the game doesn't have a winner.
+* On single player mode, if there was a tie on an even round (2nd, 4th, 6th etc), the message doesnt appear. No issues with 2 player mode.
+    - 26/0/2023 RESOLVED :white_check_mark: The `numberOfPlays` was incrementing after the second `checkIfPlayerWins()` hence on the 9th turn it wasn't meeting the requirements till after the function ran. The order was swapped around.
 
 ## Things to improve :memo:
 * Change the grid so that it dyanamically changes size depending on the screen as it is currently width/length is currently fixed
