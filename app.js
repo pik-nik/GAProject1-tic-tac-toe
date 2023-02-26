@@ -36,7 +36,6 @@ let boxNumbersNotPlayed = []
 let gameFinished = false
 let gameHasWinner = false
 //? RESET BUTTON
-// ? In single player, after player 2 wins, there is a 1.5second lag where you can still press the remaining buttons
 
 
 singlePlayerMode.classList.add("pulsate-fwd")
@@ -83,13 +82,11 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
                 console.log("does player 1 win", doesPlayer1Win);
                 gameHasWinner = true
             } else if (doesPlayer2Win) {
-                setTimeout(() => {
-                    boxes.forEach(box => {
+                boxes.forEach(box => {
                     box.removeEventListener("click", handleClickSinglePlayer)
                     box.removeEventListener("mouseover", handleHover)
                     box.style.cursor = "not-allowed"   
-                    });
-                }, 1501);
+                });
                 resultsMessage.textContent = "The computer is the winner!"
                 gameCompletePopup.style.visibility = "visible"
                 gameCompletePopup.classList.add("text-focus-in")
@@ -98,12 +95,12 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
                 player2WinCount.textContent = numberOfPlayer2wins
                 gameFinished = true
                 gameHasWinner = true
+                console.log("does player 2 win", doesPlayer2Win);
             } else if (numberOfPlays === 9) { // be weary of this as it will run through the waysToWin array 8 times
                 gameCompletePopup.style.visibility = "visible"
                 gameCompletePopup.classList.add("text-focus-in")
                 turnMessage.style.visibility = "hidden"
                 gameFinished = true
-                console.log("tie message reveal runs?");
             }
         })
         
@@ -111,7 +108,6 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
             resultsMessage.textContent = "Awww, it's a tie"
             numberOfTies++
             tiesCount.textContent = numberOfTies
-            console.log(("tie message text runs?"))
         }
     }
 
@@ -163,7 +159,6 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
             box.removeEventListener("mouseover", handleHover)
             box.style.cursor = "not-allowed"   
         });
-
             
         if (gameFinished === false) { // if game is not finished, then let the computer play a turn
             for(let num=1; num<=9; num++) {
@@ -206,20 +201,21 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
                     }, 1001);
                 }
             })
-            
-            setTimeout(function() {
-                console.log(boxNumbersNotPlayed, "box numbers not played before loop is run"); 
-                for(let num=1; num<=9; num++) {
-                    if(boxNumbersNotPlayed.includes(num)) {
-                        boxes[num-1].addEventListener("click", handleClickSinglePlayer)
-                        boxes[num-1].addEventListener("mouseover", handleHover)
-                        boxes[num-1].style.cursor = "pointer"  
-                    }
-                    console.log(boxNumbersNotPlayed, "box numbers not played after loop is run");
-                    console.log("number reactivating click and mouseover",num);
-                }
-                boxNumbersNotPlayed = []
-            },1500)
+
+            setTimeout(() => {
+                if (gameFinished === false) {
+                    setTimeout(function() {
+                        for(let num=1; num<=9; num++) {
+                            if(boxNumbersNotPlayed.includes(num)) {
+                                boxes[num-1].addEventListener("click", handleClickSinglePlayer)
+                                boxes[num-1].addEventListener("mouseover", handleHover)
+                                boxes[num-1].style.cursor = "pointer"  
+                            }
+                        }
+                        boxNumbersNotPlayed = []
+                    },500)
+                } 
+            }, 1002);
         }
     }
 
@@ -232,10 +228,6 @@ function startSinglePlayerMode () { //* FOR SINGLE PLAYER MODE
             box.textContent = ""
             box.removeEventListener("click", handleClickSinglePlayer)
             box.removeEventListener("mouseover", handleHover)
-            // box.addEventListener("click", handleClickSinglePlayer)
-            // box.addEventListener("mouseover", handleHover) 
-            // box.addEventListener("mouseout", handleHoverOff) 
-            // box.style.cursor = "pointer"
             box.classList.remove("hovering")
             box.classList.remove("clicked")   
             box.classList.remove("flip-horizontal-top")
